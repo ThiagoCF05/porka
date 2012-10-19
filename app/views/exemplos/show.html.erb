@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @exemplo.nome %>
+</p>
+
+<p>
+  <b>Idade:</b>
+  <%= @exemplo.idade %>
+</p>
+
+
+<%= link_to 'Edit', edit_exemplo_path(@exemplo) %> |
+<%= link_to 'Back', exemplos_path %>

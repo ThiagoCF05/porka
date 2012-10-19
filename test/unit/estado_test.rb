@@ -1,4 +1,4 @@
-require 'test_helper'
+rakerequire 'test_helper'
 
 class EstadoTest < ActiveSupport::TestCase
   # test "the truth" do
