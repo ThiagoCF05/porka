@@ -13,11 +13,11 @@ class UsuariosController < ApplicationController
   # GET /usuarios/1
   # GET /usuarios/1.json
   def show
-    @usuarios = Usuario.find(params[:id])
+    @usuario = Usuario.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @usuarios }
+      format.json { render :json => @usuario }
     end
   end
 

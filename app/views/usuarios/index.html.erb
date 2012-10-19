@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Nome</th>
+    <th>Tipo</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,7 +12,8 @@
 <% @usuarios.each do |usuario| %>
   <tr>
     <td><%= usuario.nome %></td>
-    <td><%= link_to 'Show', @usuario %></td>
+    <td><%= usuario.type %></td>
+    <td><%= link_to 'Show', usuario_path(usuario) %></td>
      <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
     <td><%= link_to 'Destroy', usuario, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
