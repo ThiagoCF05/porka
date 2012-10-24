@@ -2,6 +2,11 @@ Porka::Application.routes.draw do
   resources :usuarios
   resources :clientes
   resources :cooperativa_usuarium
+  resources :telefones
+  resources :enderecos
+  resources :main
+  
+  match 'usuarios/:id/novo-telefone' => 'Telefones#newUsuario', :as => 'new_telefone_usuario'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

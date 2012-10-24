@@ -25,6 +25,7 @@ class UsuariosController < ApplicationController
   # GET /usuarios/new.json
   def new
     @usuario = Usuario.new
+    @usuario.status = 'A'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +41,7 @@ class UsuariosController < ApplicationController
   # POST /usuarios
   # POST /usuarios.json
   def create
-    @usuarios = Usuario.new(params[:usuario])
+    @usuario = Usuario.new(params[:usuario])
 
     respond_to do |format|
       if @usuario.save

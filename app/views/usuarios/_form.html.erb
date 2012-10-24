@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.email_field :email %>
   </div>
   <div class="field">
     <%= f.label :date_nascimento %><br />
@@ -38,7 +38,18 @@
     <%= f.text_field :documento %>
   </div>
   <div class="field">
-    <%= f.label :sexo %><br />
+    <%= f.label 'Sexo' %><br />
+    <%= f.radio_button :sexo, 'M', :checked => true %> 
+    <%= label :sexo, 'Masculino' %>
+    <%= f.radio_button :sexo, 'F' %>
+    <%= label :sexo, 'Feminino' %>
+  </div>
+  <div class="field">
+    <%= f.label 'Status' %><br />
+    <%= f.radio_button :status, 'A', :checked => true %> 
+    <%= label :status, 'Ativo' %>
+    <%= f.radio_button :status, 'I' %>
+    <%= label :status, 'Inativo' %>
   </div>
   <div class="actions">
     <%= f.submit %>

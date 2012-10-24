@@ -58,56 +58,11 @@
 
 <br />
 
-<h3>Telefones do Usuário</h3>
-<table>
-  <thead>
-    <tr>
-      <th>DDD</th>
-      <th>Número</th>
-      <th>Tipo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @usuario.telefones.each do |telefone| %>
-      <tr>
-        <td><%= telefone.ddd %></td>
-        <td><%= telefone.numero %></td>
-        <td><%= telefone.tipo %></td>
-      </tr>
-    <% end %>
-  </tbody>  
-</table>
+<%= render :partial => 'telefones/telefones', :locals => { :usuario => @usuario } %>
 
 <br />
 
-<h3>Endereços do Usuário</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Rua</th>
-      <th>Bairro</th>
-      <th>CEP</th>
-      <th>Número</th>
-      <th>Complemento</th>
-      <th>Cidade</th>
-      <th>Estado</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @usuario.enderecos.each do |endereco| %>
-      <tr>
-        <td><%= endereco.rua %></td>
-        <td><%= endereco.bairro %></td>
-        <td><%= endereco.cep %></td>
-        <td><%= endereco.numero %></td>
-        <td><%= endereco.complemento %></td>
-        <td></td>
-        <td></td>
-      </tr>
-    <% end %>
-  </tbody>  
-</table>
-
+<%= render :partial => 'enderecos/enderecos', :locals => { :usuario => @usuario } %>
 
 <%= link_to 'Editar', edit_usuario_path(@usuario) %> |
 <%= link_to 'Voltar', usuarios_path %>

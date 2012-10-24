@@ -1,0 +1,29 @@
+<h3>Endereços do Usuário</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Rua</th>
+      <th>Bairro</th>
+      <th>CEP</th>
+      <th>Número</th>
+      <th>Complemento</th>
+      <th>Cidade</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @usuario.enderecos.each do |endereco| %>
+      <tr>
+        <td><%= endereco.rua %></td>
+        <td><%= endereco.bairro %></td>
+        <td><%= endereco.cep %></td>
+        <td><%= endereco.numero %></td>
+        <td><%= endereco.complemento %></td>
+        <td><%= endereco.cidade %></td>
+        <td><%= link_to 'Editar', edit_endereco_path(endereco) %></td>
+        <td><%= link_to 'Remover', endereco, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>  
+</table>

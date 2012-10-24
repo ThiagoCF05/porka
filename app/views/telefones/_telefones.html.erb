@@ -1,0 +1,26 @@
+<h3>Telefones</h3>
+<table>
+  <thead>
+    <tr>
+      <th>DDD</th>
+      <th>Número</th>
+      <th>Tipo</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @usuario.telefones.each do |telefone| %>
+      <tr>
+        <td><%= telefone.ddd %></td>
+        <td><%= telefone.numero %></td>
+        <td><%= telefone.tipo %></td>
+        <td><%= link_to 'Editar', edit_telefone_path(telefone) %></td>
+        <td><%= link_to 'Remover', telefone, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>  
+</table>
+
+<%= link_to 'Novo Telefone', new_telefone_usuario_path(@usuario)  %>
+

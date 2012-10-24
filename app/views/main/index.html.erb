@@ -1,0 +1,43 @@
+<h1>USUARIOS</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Tipo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @usuarios.each do |usuario| %>
+  <tr>
+    <td><%= usuario.nome %></td>
+    <td><%= usuario.type %></td>
+    <td><%= link_to 'Show', usuario_path(usuario) %></td>
+     <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
+    <td><%= link_to 'Destroy', usuario, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<h1>TELEFONES</h1>
+
+<table>
+  <tr>
+    <th>DDD</th>
+    <th>Número</th>
+    <th>Complemento</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @telefones.each do |telefone| %>
+  <tr>
+    <td><%= telefone.ddd %></td>
+    <td><%= telefone.numero %></td>
+    <td><%= telefone.tipo %></td>
+    <td><%= link_to 'Show', telefone_path(telefone) %></td>
+     <td><%= link_to 'Edit', edit_telefone_path(telefone) %></td>
+    <td><%= link_to 'Destroy', telefone, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
