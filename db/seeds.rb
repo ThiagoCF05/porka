@@ -6,18 +6,22 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
-usuario_cliente = Cliente.create :nome => "Thiago Castro Ferreira", :senha => "123456",
+cliente = Cliente.create :nome => "Thiago Castro Ferreira", :senha => "123456",
   :username => "thcasfe", :email => "thiago.castro.ferreira@gmail.com",
   :tipo_pessoa => "F", :documento => "466605845", :sexo => "M", :status => "A"
   
-usuario_cooperativa = CooperativaUsuaria.create :nome => "Cooperativa de Teste",
+cooperativa = Cooperativa.create :nome => "Cooperativa de Teste",
   :senha => "123456", :username => "teste", :email => "teste@teste.com.br",
   :tipo_pessoa => "F", :documento => 466605845, :status => "A"
 
-  telefone = Telefone.create :usuario_id => usuario_cooperativa, :ddd => 11, :numero => 985616083
+  telefone = Telefone.create :telefonavel_id => cooperativa, :ddd => 11, :numero => 985616083
   
-  endereco = Endereco.create :usuario_id => usuario_cooperativa, :rua => "Rua Marquês de Pombal",
-  :bairro => "Vila Maria Alta", :cep => 02126070, :numero => 271
+  estado = Estado.create :nome => "SP"
+  
+  cidade = Cidade.create :nome => "São Paulo", :estado_id => estado
+  
+  endereco = Endereco.create :enderecavel_id => cooperativa, :rua => "Rua Marquês de Pombal",
+  :bairro => "Vila Maria Alta", :cep => 02126070, :numero => 271, :cidade_id => cidade
   
   cooperativa = Cooperativa.create :nome => "Cooperativa de Teste", 
     :email => "teste@teste.com.br", :tipo_pessoa => "F", :status => "A"
@@ -32,4 +36,4 @@ usuario_cooperativa = CooperativaUsuaria.create :nome => "Cooperativa de Teste",
   
   produto = Produto.create :nome => "Goiabada Cascão de Monte Alto", 
     :descricao => "A mais deliciosa goiabada cascão da região, agora vendida na web!",
-    :status => "A", :subcategoria_id => Subcategoria.find(2), :usuario_id => Usuario.find(2)
+    :status => "A", :subcategoria_id => Subcategoria.find(2), :cooperativa_id => Cooperativa.find(2)

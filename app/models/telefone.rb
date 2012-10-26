@@ -1,4 +1,3 @@
 class Telefone < ActiveRecord::Base
-  belongs_to :usuario
-  belongs_to :cooperativa
+  belongs_to :telefonavel, :polymorphic => true
 end

@@ -1,4 +1,5 @@
 class Cotacao < ActiveRecord::Base
-  belongs_to :cooperativa_usuaria, :class_name => "CooperativaUsuaria"
+  belongs_to :cooperativa, :class_name => "Cooperativa", 
+    :foreign_key => "cooperativa_id"
   belongs_to :oferta
 end

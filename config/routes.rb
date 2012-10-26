@@ -1,7 +1,8 @@
 Porka::Application.routes.draw do
   resources :usuarios
   resources :clientes
-  resources :cooperativa_usuarium
+  resources :admistradors
+  resources :cooperativas
   resources :telefones
   resources :enderecos
   resources :main

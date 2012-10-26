@@ -1,3 +1,3 @@
-class Cliente < Usuario
+class Cliente < ActiveRecord::Base
   has_many :pagamentos
 end
