@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20121026012224) do
     t.datetime "updated_at"
   end
 
-  create_table "enderecos", :id => false, :force => true do |t|
+  create_table "enderecos", :force => true do |t|
     t.integer  "enderecavel_id",   :limit => 8,  :null => false
     t.string   "enderecavel_type"
     t.integer  "cidade_id",        :limit => 8,  :null => false
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20121026012224) do
   end
 
   create_table "log_acessos", :id => false, :force => true do |t|
+    t.integer  "id",         :limit => 8, :null => false
     t.integer  "usuario_id", :limit => 8, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -130,7 +131,7 @@ ActiveRecord::Schema.define(:version => 20121026012224) do
     t.datetime "updated_at"
   end
 
-  create_table "telefones", :id => false, :force => true do |t|
+  create_table "telefones", :force => true do |t|
     t.integer  "telefonavel_id",   :limit => 8, :null => false
     t.string   "telefonavel_type"
     t.integer  "ddd",                           :null => false

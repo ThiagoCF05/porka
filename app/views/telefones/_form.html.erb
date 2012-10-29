@@ -23,6 +23,10 @@
     <%= f.label :tipo %><br />
     <%= f.text_field :tipo %>
   </div>
+  <div class="field">
+    <%=f.hidden_field :telefonavel_id %>
+    <%= f.hidden_field :telefonavel_type %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

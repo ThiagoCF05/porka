@@ -36,7 +36,8 @@ class TelefonesController < ApplicationController
   # GET /telefones/newUsuario/{:id}.json
   def newUsuario
     @telefone = Telefone.new
-    @telefone.usuario = Usuario.find(params[:id])
+    @telefone.telefonavel_id = params[:id]
+    @telefone.telefonavel_type = 'Usuario'
 
     respond_to do |format|
       format.html { render :action => "new" }
@@ -44,12 +45,14 @@ class TelefonesController < ApplicationController
     end
   end
   
-   # GET /telefones/newCooperativa
-  # GET /telefones/newCooperativa.json
-  def newCooperativa
+   # GET /telefones/newCliente
+  # GET /telefones/newCliente.json
+  def newCliente
     @telefone = Telefone.new
     @telefone.cooperativa = Cooperativa.find(params[:id])
-
+    @telefone.telefonavel_id = params[:id]
+    @telefone.telefonavel_type = 'Cliente'
+    
     respond_to do |format|
       format.html { render :action => "new" }
       format.json { render :json => @telefone }
@@ -68,8 +71,13 @@ class TelefonesController < ApplicationController
 
     respond_to do |format|
       if @telefone.save
-        format.html { redirect_to @telefone.usuario, :notice => 'Exemplo was successfully created.' }
-        format.json { render :json => @telefone.usuario, :status => :created, :location => @telefone.usuario }
+        if @telefone.telefonavel_type == 'Usuario'
+          format.html { redirect_to Usuario.find(@telefone.telefonavel_id), :notice => 'Exemplo was successfully created.' }
+          format.json { render :json => @telefone, :status => :created, :location => @telefone }
+        else
+          format.html { redirect_to Cliente.find(@telefone.telefonavel_id), :notice => 'Exemplo was successfully created.' }
+          format.json { render :json => @telefone, :status => :created, :location => @telefone }
+        end        
       else
         format.html { render :action => "new" }
         format.json { render :json => @telefone.errors, :status => :unprocessable_entity }
@@ -84,8 +92,13 @@ class TelefonesController < ApplicationController
 
     respond_to do |format|
       if @telefone.update_attributes(params[:telefone])
-        format.html { redirect_to usuario_path(@telefone.usuario), :notice => 'Exemplo was successfully updated.' }
-        format.json { head :ok }
+        if @telefone.telefonavel_type == 'Usuario'
+          format.html { redirect_to Usuario.find(@telefone.telefonavel_id), :notice => 'Exemplo was successfully updated.' }
+          format.json { head :ok }
+        else
+          format.html { redirect_to Cliente.find(@telefone.telefonavel_id), :notice => 'Exemplo was successfully created.' }
+          format.json { render :json => @telefone, :status => :created, :location => @telefone }
+        end        
       else
         format.html { render :action => "edit" }
         format.json { render :json => @telefone.errors, :status => :unprocessable_entity }
@@ -97,12 +110,18 @@ class TelefonesController < ApplicationController
   # DELETE /telefones/1.json
   def destroy
     @telefone = Telefone.find(params[:id])
-    @usuario = @telefone.usuario
+    @telefonavel_type = @telefone.telefonavel_type
+    @telefonavel_id = @telefone.telefonavel_id
     @telefone.destroy
 
     respond_to do |format|
-      format.html { redirect_to @usuario }
-      format.json { head :ok }
+        if @telefonavel_type == 'Usuario'
+          format.html { redirect_to Usuario.find(@telefonavel_id), :notice => 'Exemplo was successfully updated.' }
+          format.json { head :ok }
+        else
+          format.html { redirect_to Cliente.find(@telefonavel_id), :notice => 'Exemplo was successfully created.' }
+          format.json { head :ok }
+        end  
     end
   end
 end

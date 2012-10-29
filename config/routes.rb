@@ -8,6 +8,7 @@ Porka::Application.routes.draw do
   resources :main
   
   match 'usuarios/:id/novo-telefone' => 'Telefones#newUsuario', :as => 'new_telefone_usuario'
+  match 'usuarios/:id/novo-endereco' => 'Enderecos#newUsuario', :as => 'new_endereco_usuario'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

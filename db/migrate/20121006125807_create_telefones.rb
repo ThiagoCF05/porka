@@ -1,6 +1,6 @@
 class CreateTelefones < ActiveRecord::Migration
   def change
-    create_table :telefones, :id => false do |t|
+    create_table :telefones do |t|
       t.integer :telefonavel_id, :limit => 8, :null => false
       t.string :telefonavel_type
       t.integer :ddd, :null => false

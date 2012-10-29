@@ -1,0 +1,9 @@
+<h1>Editar Endereço</h1>
+
+<%= render 'form' %>
+
+<% if @endereco.enderecavel_type == 'Usuario' %>
+  <%= link_to 'Voltar', usuario_path(Usuario.find(@endereco.enderecavel_id) %>
+<% else %>
+  <%= link_to 'Voltar', cliente_path(Usuario.find(@endereco.enderecavel_id) %>
+<% end %>
