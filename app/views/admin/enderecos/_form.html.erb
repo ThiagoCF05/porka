@@ -1,0 +1,47 @@
+<%= form_for[:admin, @endereco] do |f| %>
+  <% if @endereco.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@endereco.errors.count, "error") %> Erro ao Salvar</h2>
+
+      <ul>
+      <% @endereco.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rua %><br />
+    <%= f.text_field :rua %>
+  </div>
+  <div class="field">
+    <%= f.label :numero %><br />
+    <%= f.text_field :numero %>
+  </div>
+  <div class="field">
+    <%= f.label :bairro %><br />
+    <%= f.text_field :bairro %>
+  </div>
+  <div class="field">
+    <%= f.label :cep %><br />
+    <%= f.text_field :cep %>
+  </div>
+  <div class="field">
+    <%= f.label :complemento %><br />
+    <%= f.text_field :complemento %>
+  </div>
+  <div class="field">
+   <label>Estado</label><br />
+    <% estados_array = Estado.all.map { |estado| [estado.nome, estado.id] } %>
+    <%= select_tag :estado_id, options_for_select(estados_array)  %>
+  </div>
+  
+  <div class="field">
+    <%= f.hidden_field :enderecavel_id %><br />
+    <%= f.hidden_field :enderecavel_type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

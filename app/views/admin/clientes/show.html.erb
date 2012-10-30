@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @cliente.nome %>
+</p>
+
+<p>
+  <b>Senha:</b>
+  <%= @cliente.senha %>
+</p>
+
+<p>
+  <b>Username:</b>
+  <%= @cliente.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @cliente.email %>
+</p>
+
+<p>
+  <b>Data de Cadastro:</b>
+  <%= @cliente.data_cadastro %>
+</p>
+
+<p>
+  <b>Data de Nascimento:</b>
+  <%= @cliente.date_nascimento %>
+</p>
+
+<p>
+  <b>
+    <% if @cliente.tipo_pessoa == 'F' %>
+      CPF:
+    <% else %>
+      CNPJ:
+    <% end %>
+  </b>
+  <%= @cliente.documento %>
+</p>
+
+<p>
+  <b>Sexo:</b>
+  <%= @cliente.sexo %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @cliente.status %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @cliente.type %>
+</p>
+
+<br />
+
+<%= link_to 'Editar', edit_admin_cliente_path(@cliente) %> |
+<%= link_to 'Voltar', admin_cliente_path %>

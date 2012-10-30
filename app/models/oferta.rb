@@ -3,4 +3,5 @@ class Oferta < ActiveRecord::Base
   belongs_to :administrador, :class_name => "Administrador", 
     :foreign_key => "administrador_id"
   has_one :cotacao
+  has_many :destaques
 end

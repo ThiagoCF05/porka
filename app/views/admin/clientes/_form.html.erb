@@ -1,0 +1,64 @@
+<%= form_for [:admin, @cliente] do |f| %>
+  <% if @cliente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cliente.errors.count, "error") %> Erro ao Salvar</h2>
+
+      <ul>
+      <% @cliente.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :senha %><br />
+    <%= f.password_field :senha %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :date_nascimento %><br />
+    <%= date_select 'cliente', 'date_nascimento', :start_year => 1920, :order => [:day, :month, :year] %>
+  </div>
+  <div class="field">
+    <%= f.radio_button :tipo_pessoa, 'F', :checked => true %> 
+    <%= label :tipo_pessoa, 'Física' %>
+    <%= f.radio_button :tipo_pessoa, 'J' %>
+    <%= label :tipo_pessoa, 'Jurídica' %>
+  </div>
+  <div class="field">
+    <%= f.label :documento %><br />
+    <%= f.text_field :documento %>
+  </div>
+  <div class="field">
+    <%= f.label 'Sexo' %><br />
+    <%= f.radio_button :sexo, 'M', :checked => true %> 
+    <%= label :sexo, 'Masculino' %>
+    <%= f.radio_button :sexo, 'F' %>
+    <%= label :sexo, 'Feminino' %>
+  </div>
+  <div class="field">
+    <%= f.label 'Status' %><br />
+    <%= f.radio_button :status, 'A', :checked => true %> 
+    <%= label :status, 'Ativo' %>
+    <%= f.radio_button :status, 'I' %>
+    <%= label :status, 'Inativo' %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :type %><br />
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

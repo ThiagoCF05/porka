@@ -1,6 +1,6 @@
-class UsuariosController < ApplicationController
-  # GET /usuarios
-  # GET /usuarios.json
+class Admin::UsuariosController < ApplicationController
+  # GET admin/usuarios
+  # GET admin/usuarios.json
   def index
     @usuarios = Usuario.all
 
@@ -10,8 +10,8 @@ class UsuariosController < ApplicationController
     end
   end
 
-  # GET /usuarios/1
-  # GET /usuarios/1.json
+  # GET admin/usuarios/1
+  # GET admin/usuarios/1.json
   def show
     @usuario = Usuario.find(params[:id])
 
@@ -21,8 +21,8 @@ class UsuariosController < ApplicationController
     end
   end
 
-  # GET /usuarios/new
-  # GET /usuarios/new.json
+  # GET admin/usuarios/new
+  # GET admin/usuarios/new.json
   def new
     @usuario = Usuario.new
     @usuario.status = 'A'
@@ -33,19 +33,23 @@ class UsuariosController < ApplicationController
     end
   end
 
-  # GET /usuarios/1/edit
+  # GET admin/usuarios/1/edit
   def edit
     @usuario = Usuario.find(params[:id])
   end
 
-  # POST /usuarios
-  # POST /usuarios.json
+  # POST admin/usuarios
+  # POST admin/usuarios.json
   def create
-    @usuario = Usuario.new(params[:usuario])
+    if params[:admin] == 'admin'
+      @usuario = Administrador.new(params[:usuario])
+    else
+      @usuario = Cooperativa.new(params[:usuario])
+    end
 
     respond_to do |format|
       if @usuario.save
-        format.html { redirect_to @usuario, :notice => 'Exemplo was successfully created.' }
+        format.html { redirect_to [:admin, @usuario], :notice => 'Exemplo was successfully created.' }
         format.json { render :json => @usuario, :status => :created, :location => @usuario }
       else
         format.html { render :action => "new" }
@@ -54,14 +58,14 @@ class UsuariosController < ApplicationController
     end
   end
 
-  # PUT /usuarios/1
-  # PUT /usuarios/1.json
+  # PUT admin/usuarios/1
+  # PUT admin/usuarios/1.json
   def update
     @usuario = Usuario.find(params[:id])
 
     respond_to do |format|
       if @usuario.update_attributes(params[:usuario])
-        format.html { redirect_to @usuario, :notice => 'Exemplo was successfully updated.' }
+        format.html { redirect_to [:admin, @usuario], :notice => 'Exemplo was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
@@ -70,14 +74,14 @@ class UsuariosController < ApplicationController
     end
   end
 
-  # DELETE /usuarios/1
-  # DELETE /usuarios/1.json
+  # DELETE admin/usuarios/1
+  # DELETE admin/usuarios/1.json
   def destroy
     @usuario = Usuario.find(params[:id])
     @usuario.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_usuarios_path }
+      format.html { redirect_to admin_usuarios_url }
       format.json { head :ok }
     end
   end

@@ -1,14 +1,30 @@
 class MainController < ApplicationController
   
-  # GET /main/index
-  # GET /main/index.json
+  # GET /index
+  # GET /index.json
   def index
-    @ofertas = Oferta.order("created_at desc").limit(10)
-    @telefones = Telefone.all
+    @ofertas = self.getOfertas
+    @destaque = self.getDestaque
+    @cooperativas = self.getCooperativas
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @telefones }
+      #format.json { header : ok }
     end
+  end
+  
+  def getCooperativas
+    @coopertativas = Cooperativa.all.shuffle
+    @cooperativas = @cooperativas[0..5]
+    return @cooperativas
+  end
+  
+  def getOfertas
+    @ofertas = Oferta.order("created_at desc").limit(10)
+    return @ofertas
+  end
+  
+  def getDestaque
+    @destaque = Destaque.order("created_at desc").limit(10)
   end
 end

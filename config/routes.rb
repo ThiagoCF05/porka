@@ -7,8 +7,20 @@ Porka::Application.routes.draw do
   resources :enderecos
   resources :main
   
+  match '/' => 'Main#index'
+  
   match 'usuarios/:id/novo-telefone' => 'Telefones#newUsuario', :as => 'new_telefone_usuario'
   match 'usuarios/:id/novo-endereco' => 'Enderecos#newUsuario', :as => 'new_endereco_usuario'
+  
+  match 'admin/usuarios/:id/novo-telefone' => 'Telefones#newUsuario', :as => 'new_admin_telefone_usuario'
+  match 'admin/usuarios/:id/novo-endereco' => 'Enderecos#newUsuario', :as => 'new_admin_endereco_usuario'
+  
+  namespace :admin do
+      resources :usuarios
+      resources :telefones
+      resources :clientes      
+   end
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
