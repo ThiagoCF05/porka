@@ -1,0 +1,30 @@
+<h1>COTAÇÕES</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Cooperativa</th>
+    <th>Data Início</th>
+    <th>Data Fim</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cotacaos.each do |cotacao| %>
+  <tr>
+    <td><%= cotacao.id %></td>
+    <td><%= cotacao.cooperativa.nome %></td>
+    <td><%= cotacao.data_inicio %></td>
+    <td><%= cotacao.data_fim %></td>    
+    <td><%= link_to 'Show', admin_cotacao_path(cotacao) %></td>
+     <td><%= link_to 'Edit', edit_admin_cotacao_path(cotacao) %></td>
+    <td><%= link_to 'Destroy', [:admin,cotacao] , :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Aprovar', new_admin_aprovacao_cotacao_path(cotacao) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nova Cotação', new_admin_cotacao_path %>

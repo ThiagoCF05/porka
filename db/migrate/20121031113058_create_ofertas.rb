@@ -1,6 +1,6 @@
-class CreateOferta < ActiveRecord::Migration
+class CreateOfertas < ActiveRecord::Migration
   def change
-    create_table :oferta, :id => false do |t|
+    create_table :ofertas, :id => false do |t|
       t.integer :id, :limit => 8, :null => false
       t.integer :cotacao_id, :limit => 8, :null => false
       t.integer :administrador_id, :limit => 8, :null => false
@@ -9,7 +9,7 @@ class CreateOferta < ActiveRecord::Migration
       t.integer :total_vendas, :null => false
       t.float :valor_convite, :null => false
       t.float :porcentagem_instituicao, :null => false
-      t.string :status, :limit => 1, :null => false
+      t.integer :status_id, :null => false
       t.timestamps
     end
   end

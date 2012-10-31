@@ -1,0 +1,56 @@
+<%= form_for [:admin, @administrador] do |f| %>
+  <% if @administrador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@administrador.errors.count, "error") %> Erro ao Salvar</h2>
+
+      <ul>
+      <% @administrador.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :senha %><br />
+    <%= f.password_field :senha %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :date_nascimento %><br />
+    <%= date_select 'administrador', 'date_nascimento', :start_year => 1920, :order => [:day, :month, :year] %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_pessoa %><br />
+  </div>
+  <div class="field">
+    <%= f.label :documento %><br />
+    <%= f.text_field :documento %>
+  </div>
+  <div class="field">
+    <%= f.label 'Sexo' %><br />
+    <%= f.radio_button :sexo, 'M', :checked => true %> 
+    <%= label :sexo, 'Masculino' %>
+    <%= f.radio_button :sexo, 'F' %>
+    <%= label :sexo, 'Feminino' %>
+  </div>
+  <div class="field">
+    <label>Status</label><br />
+    <% status_array = Status.all.map { |status| [status.descricao, status.id] } %>
+    <%= f.select :status_id, Status.all.collect {|status| [status.descricao, status.id]}  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

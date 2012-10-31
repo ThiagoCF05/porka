@@ -1,4 +1,6 @@
 class Admin::CotacaosController < ApplicationController
+  before_filter :administrador_logado
+  
     # GET admin/cotacaos
   # GET admin/cotacaos.json
   def index
@@ -24,8 +26,8 @@ class Admin::CotacaosController < ApplicationController
   # GET admin/cotacaos/new
   # GET admin/cotacaos/new.json
   def new
-    @cotacao = cotacao.new
-    @cotacao.status = 'A'
+    @cotacao = Cotacao.new
+    @cotacao.tipo = 'C'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -73,11 +75,11 @@ class Admin::CotacaosController < ApplicationController
   # DELETE admin/cotacaos/1
   # DELETE admin/cotacaos/1.json
   def destroy
-    @cotacao = cotacao.find(params[:id])
+    @cotacao = Cotacao.find(params[:id])
     @cotacao.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_cotacaos_url }
+      format.html { redirect_to admin_cotacaos_path }
       format.json { head :ok }
     end
   end

@@ -1,0 +1,55 @@
+<p>
+  <b>Nome:</b>
+  <%= @cooperativa.nome %>
+</p>
+
+<p>
+  <b>Senha:</b>
+  <%= @cooperativa.senha %>
+</p>
+
+<p>
+  <b>Username:</b>
+  <%= @cooperativa.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @cooperativa.email %>
+</p>
+
+<p>
+  <b>Data de Cadastro:</b>
+  <%= @cooperativa.data_cadastro %>
+</p>
+
+<p>
+  <b>Data de Nascimento:</b>
+  <%= @cooperativa.date_nascimento %>
+</p>
+
+<p>
+  <b>
+    <% if @cooperativa.tipo_pessoa == 'F' %>
+      CPF:
+    <% else %>
+      CNPJ:
+    <% end %>
+  </b>
+  <%= @cooperativa.documento %>
+</p>
+
+<p>
+  <b>Sexo:</b>
+  <%= @cooperativa.sexo %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @cooperativa.status.descricao %>
+</p>
+
+<br />
+
+<%= link_to 'Editar', edit_admin_cooperativa_path(@cooperativa) %> |
+<%= link_to 'Voltar', admin_cooperativas_path %>

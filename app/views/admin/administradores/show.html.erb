@@ -1,0 +1,56 @@
+<p>
+  <b>Nome:</b>
+  <%= @administrador.nome %>
+</p>
+
+<p>
+  <b>Senha:</b>
+  <%= @administrador.senha %>
+</p>
+
+<p>
+  <b>Username:</b>
+  <%= @administrador.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @administrador.email %>
+</p>
+
+<p>
+  <b>Data de Cadastro:</b>
+  <%= @administrador.data_cadastro %>
+</p>
+
+<p>
+  <b>Data de Nascimento:</b>
+  <%= @administrador.date_nascimento %>
+</p>
+
+<p>
+  <b>
+    <% if @administrador.tipo_pessoa == 'F' %>
+      CPF:
+    <% else %>
+      CNPJ:
+    <% end %>
+  </b>
+  <%= @administrador.documento %>
+</p>
+
+<p>
+  <b>Sexo:</b>
+  <%= @administrador.sexo %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @administrador.status.descricao %>
+</p>
+
+<br />
+
+<%= link_to 'Editar', edit_admin_administrador_path(@administrador) %> |
+<%= link_to 'Voltar à Listagem de Administradores', admin_administradores_path %>
+<%= link_to 'Voltar à Listagem de Usuários', admin_usuarios_path %>

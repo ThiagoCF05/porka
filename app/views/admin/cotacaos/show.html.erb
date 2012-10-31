@@ -1,0 +1,44 @@
+<p>
+  <b>ID:</b>
+  <%= @cotacao.id %>
+</p>
+
+<p>
+  <b>Cooperativa:</b>
+  <%= @cotacao.cooperativa.nome %>
+</p>
+
+<p>
+  <b>Data Início:</b>
+  <%= @cotacao.data_inicio %>
+</p>
+
+<p>
+  <b>Data Fim:</b>
+  <%= @cotacao.data_fim %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%= @cotacao.valor %>
+</p>
+
+<p>
+  <b>Descrição:</b>
+  <%= @cotacao.descricao %>
+</p>
+
+<p>
+  <b>Tipo:</b>
+  <%= @cotacao.tipo %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @cotacao.status.descricao %>
+</p>
+<br />
+
+<%= link_to 'Aprovar Cotação', new_admin_aprovacao_cotacao_path(@cotacao) %>
+<%= link_to 'Editar', edit_admin_cotacao_path(@cotacao) %> |
+<%= link_to 'Voltar', admin_cotacaos_path %>

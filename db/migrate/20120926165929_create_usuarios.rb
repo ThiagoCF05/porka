@@ -11,7 +11,7 @@ class CreateUsuarios < ActiveRecord::Migration
       t.string :tipo_pessoa, :limit => 1
       t.integer :documento, :limit => 8
       t.string :sexo, :limit => 1
-      t.string :status, :limit => 1, :null => false
+      t.integer :status_id, :null => false
       t.string :type
       t.timestamps
     end

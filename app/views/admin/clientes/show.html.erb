@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Nome:</b>
   <%= @cliente.nome %>
@@ -18,11 +16,6 @@
 <p>
   <b>Email:</b>
   <%= @cliente.email %>
-</p>
-
-<p>
-  <b>Data de Cadastro:</b>
-  <%= @cliente.data_cadastro %>
 </p>
 
 <p>
@@ -48,7 +41,7 @@
 
 <p>
   <b>Status:</b>
-  <%= @cliente.status %>
+  <%= @cliente.status.descricao %>
 </p>
 
 <p>

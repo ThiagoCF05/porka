@@ -9,7 +9,7 @@ class CreatePagamentos < ActiveRecord::Migration
       t.integer :quantidade_cupons, :null => false
       t.string :forma_pagamento, :limit => 1, :null => false
       t.integer :documento, :null => false
-      t.string :status, :limit => 1, :null => false
+      t.integer :status_id, :null => false
       t.timestamps
     end
   end

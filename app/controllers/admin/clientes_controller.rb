@@ -1,4 +1,6 @@
 class Admin::ClientesController < ApplicationController
+  before_filter :administrador_logado
+  
   # GET admin/clientes
   # GET admin/clientes.json
   def index
@@ -25,7 +27,7 @@ class Admin::ClientesController < ApplicationController
   # GET admin/clientes/new.json
   def new
     @cliente = Cliente.new
-    @cliente.status = 'A'
+    @cliente.status = Status.first
 
     respond_to do |format|
       format.html # new.html.erb
@@ -77,7 +79,7 @@ class Admin::ClientesController < ApplicationController
     @cliente.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_cliente_url }
+      format.html { redirect_to admin_clientes_path }
       format.json { head :ok }
     end
   end

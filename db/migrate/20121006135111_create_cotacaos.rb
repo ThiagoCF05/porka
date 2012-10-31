@@ -8,7 +8,7 @@ class CreateCotacaos < ActiveRecord::Migration
       t.float :valor, :null => false
       t.text :descricao
       t.string :tipo, :null => false
-      t.string :status, :null => false
+      t.integer :status_id, :null => false
       t.timestamps
     end
   end

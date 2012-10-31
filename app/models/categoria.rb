@@ -1,3 +1,4 @@
 class Categoria < ActiveRecord::Base
-  has_many :subcategoria
+  has_many :subcategorias
+  belongs_to :status
 end

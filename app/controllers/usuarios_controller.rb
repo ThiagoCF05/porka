@@ -77,7 +77,7 @@ class UsuariosController < ApplicationController
     @usuario.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_usuarios_path }
+      format.html { redirect_to usuarios_url }
       format.json { head :ok }
     end
   end

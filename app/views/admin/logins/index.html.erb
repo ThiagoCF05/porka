@@ -1,0 +1,11 @@
+<h1>LOGIN ADMINISTRADOR</h1>
+
+<%= form_tag('/admin/login/create') do -%>
+  <div><%= label_tag 'Username' %></div>
+  <div><%= text_field_tag 'username' %></div><br />
+  
+  <div><%= label_tag 'Senha' %></div>
+  <div><%= password_field_tag 'senha' %></div><br />
+  
+  <div><%= submit_tag 'Login' %></div>
+<% end -%>

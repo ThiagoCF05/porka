@@ -1,4 +1,6 @@
 class Admin::UsuariosController < ApplicationController
+  before_filter :administrador_logado
+  
   # GET admin/usuarios
   # GET admin/usuarios.json
   def index
@@ -25,7 +27,6 @@ class Admin::UsuariosController < ApplicationController
   # GET admin/usuarios/new.json
   def new
     @usuario = Usuario.new
-    @usuario.status = 'A'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -81,7 +82,7 @@ class Admin::UsuariosController < ApplicationController
     @usuario.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_usuarios_url }
+      format.html { redirect_to admin_usuarios_path }
       format.json { head :ok }
     end
   end

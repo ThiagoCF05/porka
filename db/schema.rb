@@ -10,12 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121026012224) do
+ActiveRecord::Schema.define(:version => 20121031113630) do
 
-  create_table "categoria", :force => true do |t|
+  create_table "categorias", :force => true do |t|
     t.string   "nome",       :limit => 80, :null => false
     t.text     "descricao"
-    t.string   "status",     :limit => 1,  :null => false
+    t.integer  "status_id",                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,16 +30,14 @@ ActiveRecord::Schema.define(:version => 20121026012224) do
   create_table "clientes", :id => false, :force => true do |t|
     t.integer  "id",              :limit => 8,  :null => false
     t.string   "nome",            :limit => 50
-    t.string   "senha"
+    t.string   "senha",                         :null => false
     t.string   "username"
     t.string   "email",           :limit => 80, :null => false
-    t.datetime "data_cadastro"
     t.datetime "date_nascimento"
     t.string   "tipo_pessoa",     :limit => 1
     t.integer  "documento",       :limit => 8
     t.string   "sexo",            :limit => 1
-    t.string   "status",          :limit => 1,  :null => false
-    t.string   "type"
+    t.integer  "status_id",                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,7 +50,16 @@ ActiveRecord::Schema.define(:version => 20121026012224) do
     t.float    "valor",                       :null => false
     t.text     "descricao"
     t.string   "tipo",                        :null => false
-    t.string   "status",                      :null => false
+    t.integer  "status_id",                   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "destaques", :id => false, :force => true do |t|
+    t.integer  "id",          :limit => 8, :null => false
+    t.integer  "oferta_id",   :limit => 8, :null => false
+    t.datetime "data_inicio"
+    t.datetime "data_final"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -83,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20121026012224) do
     t.datetime "updated_at"
   end
 
-  create_table "oferta", :id => false, :force => true do |t|
+  create_table "ofertas", :id => false, :force => true do |t|
     t.integer  "id",                      :limit => 8, :null => false
     t.integer  "cotacao_id",              :limit => 8, :null => false
     t.integer  "administrador_id",        :limit => 8, :null => false
@@ -92,7 +99,7 @@ ActiveRecord::Schema.define(:version => 20121026012224) do
     t.integer  "total_vendas",                         :null => false
     t.float    "valor_convite",                        :null => false
     t.float    "porcentagem_instituicao",              :null => false
-    t.string   "status",                  :limit => 1, :null => false
+    t.integer  "status_id",                            :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -106,7 +113,7 @@ ActiveRecord::Schema.define(:version => 20121026012224) do
     t.integer  "quantidade_cupons",              :null => false
     t.string   "forma_pagamento",   :limit => 1, :null => false
     t.integer  "documento",                      :null => false
-    t.string   "status",            :limit => 1, :null => false
+    t.integer  "status_id",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -117,16 +124,23 @@ ActiveRecord::Schema.define(:version => 20121026012224) do
     t.integer  "subcategoria_id"
     t.string   "nome",            :limit => 80, :null => false
     t.text     "descricao"
-    t.string   "status",          :limit => 1,  :null => false
+    t.integer  "status_id",                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "subcategoria", :force => true do |t|
+  create_table "statuses", :force => true do |t|
+    t.string   "codigo",     :limit => 2, :null => false
+    t.string   "descricao",               :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subcategorias", :force => true do |t|
     t.integer  "categoria_id",               :null => false
     t.string   "nome",         :limit => 80, :null => false
     t.text     "descricao"
-    t.string   "status",       :limit => 1,  :null => false
+    t.integer  "status_id",                  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -152,7 +166,7 @@ ActiveRecord::Schema.define(:version => 20121026012224) do
     t.string   "tipo_pessoa",     :limit => 1
     t.integer  "documento",       :limit => 8
     t.string   "sexo",            :limit => 1
-    t.string   "status",          :limit => 1,  :null => false
+    t.integer  "status_id",                     :null => false
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"

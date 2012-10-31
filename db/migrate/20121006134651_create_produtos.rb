@@ -6,7 +6,7 @@ class CreateProdutos < ActiveRecord::Migration
       t.integer :subcategoria_id
       t.string :nome, :limit => 80, :null => false
       t.text :descricao
-      t.string :status, :limit => 1, :null => false
+      t.integer :status_id, :null => false
       t.timestamps
     end
   end

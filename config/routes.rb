@@ -1,11 +1,13 @@
 Porka::Application.routes.draw do
   resources :usuarios
   resources :clientes
-  resources :admistradors
+  resources :administradores
   resources :cooperativas
   resources :telefones
   resources :enderecos
   resources :main
+  resources :cotacaos
+  resources :ofertas
   
   match '/' => 'Main#index'
   
@@ -15,10 +17,20 @@ Porka::Application.routes.draw do
   match 'admin/usuarios/:id/novo-telefone' => 'Telefones#newUsuario', :as => 'new_admin_telefone_usuario'
   match 'admin/usuarios/:id/novo-endereco' => 'Enderecos#newUsuario', :as => 'new_admin_endereco_usuario'
   
+  match 'admin/ofertas/aprovar/:id' => 'Admin::Ofertas#aprovar', :as => 'new_admin_aprovacao_cotacao'
+  
+  match 'admin/login/create/' => 'Admin::Logins#create'
+  
   namespace :admin do
       resources :usuarios
+      resources :administradores
+      resources :cooperativas
       resources :telefones
-      resources :clientes      
+      resources :clientes 
+      resources :cotacaos  
+      resources :ofertas 
+      
+      root :to => 'Logins#index'
    end
   
 

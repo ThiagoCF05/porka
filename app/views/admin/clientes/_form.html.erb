@@ -49,14 +49,9 @@
     <%= label :sexo, 'Feminino' %>
   </div>
   <div class="field">
-    <%= f.label 'Status' %><br />
-    <%= f.radio_button :status, 'A', :checked => true %> 
-    <%= label :status, 'Ativo' %>
-    <%= f.radio_button :status, 'I' %>
-    <%= label :status, 'Inativo' %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :type %><br />
+    <label>Status</label><br />
+    <% status_array = Status.all.map { |status| [status.descricao, status.id] } %>
+    <%= f.select :status_id, Status.all.collect {|status| [status.descricao, status.id]}  %>
   </div>
   <div class="actions">
     <%= f.submit %>
