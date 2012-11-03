@@ -4,7 +4,7 @@ class Admin::OfertasController < ApplicationController
   # GET admin/ofertas
   # GET admin/ofertas.json
   def index
-    @ofertas = Oferta.all
+    @ofertas = Oferta.where(:status_id => Status.find_by_descricao('Ativo'))
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,8 +26,8 @@ class Admin::OfertasController < ApplicationController
   # GET admin/ofertas/new
   # GET admin/ofertas/new.json
   def new
-    @oferta = Oferta.new
-    @oferta.cotacao = Cotacao.find(params[:id])
+    @oferta = Oferta.new    
+    @oferta.cotacao = @cotacao
     @oferta.administrador = Administrador.first
     @oferta.data_inicio = @oferta.cotacao.data_inicio
     @oferta.data_fim = @oferta.cotacao.data_fim
@@ -44,6 +44,8 @@ class Admin::OfertasController < ApplicationController
   def aprovar
     @oferta = Oferta.new
     @oferta.cotacao = Cotacao.find(params[:id])
+    @oferta.cotacao.update_attributes(:status => Status.find_by_descricao('Aprovado'))
+    
     @oferta.administrador = Administrador.first
     @oferta.data_inicio = @oferta.cotacao.data_inicio
     @oferta.data_fim = @oferta.cotacao.data_fim
@@ -97,7 +99,7 @@ class Admin::OfertasController < ApplicationController
   # DELETE admin/ofertas/1.json
   def destroy
     @oferta = Oferta.find(params[:id])
-    @oferta.destroy
+    @oferta.update_attributes :status => Status.find_by_descricao('Inativo')
 
     respond_to do |format|
       format.html { redirect_to admin_ofertas_path }

@@ -4,7 +4,7 @@ class Admin::UsuariosController < ApplicationController
   # GET admin/usuarios
   # GET admin/usuarios.json
   def index
-    @usuarios = Usuario.all
+    @usuarios = Usuario.where(:status_id => Status.find_by_descricao('Ativo'))
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,7 +79,7 @@ class Admin::UsuariosController < ApplicationController
   # DELETE admin/usuarios/1.json
   def destroy
     @usuario = Usuario.find(params[:id])
-    @usuario.destroy
+    @usuario.update_attributes :status => Status.find_by_descricao('Inativo')
 
     respond_to do |format|
       format.html { redirect_to admin_usuarios_path }

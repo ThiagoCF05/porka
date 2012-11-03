@@ -4,7 +4,7 @@ class Admin::ClientesController < ApplicationController
   # GET admin/clientes
   # GET admin/clientes.json
   def index
-    @clientes = Cliente.all
+    @clientes = Cliente.where(:status_id => Status.find_by_descricao('Ativo'))
 
     respond_to do |format|
       format.html # index.html.erb
@@ -76,7 +76,7 @@ class Admin::ClientesController < ApplicationController
   # DELETE admin/clientes/1.json
   def destroy
     @cliente = Cliente.find(params[:id])
-    @cliente.destroy
+    @cliente.update_attributes :status => Status.find_by_descricao('Inativo')
 
     respond_to do |format|
       format.html { redirect_to admin_clientes_path }

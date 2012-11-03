@@ -1,0 +1,2 @@
+module Admin::CategoriasHelper
+end

@@ -29,6 +29,9 @@ Porka::Application.routes.draw do
       resources :clientes 
       resources :cotacaos  
       resources :ofertas 
+      resources :categorias
+      resources :subcategorias
+      resources :produtos
       
       root :to => 'Logins#index'
    end

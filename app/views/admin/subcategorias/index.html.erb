@@ -1,0 +1,25 @@
+<h1>SUBCATEGORIAS</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  
+  <% @subcategorias.each do |subcategoria| %>
+    <tr>
+      <td><%= subcategoria.id %></td>
+      <td><%= subcategoria.nome %></td>
+      <td><%= subcategoria.status.descricao %></td>
+      <td><%= link_to 'Show', admin_subcategoria_path(subcategoria) %></td>
+      <td><%= link_to 'Edit', edit_admin_subcategoria_path(subcategoria) %></td>
+      <td><%= link_to 'Destroy', [:admin,subcategoria] , :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Novo Subcategoria', new_admin_subcategoria_path %>

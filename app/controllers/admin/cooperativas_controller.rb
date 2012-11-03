@@ -4,7 +4,7 @@ class Admin::CooperativasController < ApplicationController
   # GET admin/cooperativas
   # GET admin/cooperativas.json
   def index
-    @cooperativas = Cooperativa.all
+    @cooperativas = Cooperativa.where(:status_id => Status.find_by_descricao('Ativo'))
 
     respond_to do |format|
       format.html # index.html.erb
@@ -75,7 +75,7 @@ class Admin::CooperativasController < ApplicationController
   # DELETE admin/cooperativas/1.json
   def destroy
     @cooperativa = Cooperativa.find(params[:id])
-    @cooperativa.destroy
+    @cooperativa.update_attributes :status => Status.find_by_descricao('Inativo')
 
     respond_to do |format|
       format.html { redirect_to admin_cooperativas_path }

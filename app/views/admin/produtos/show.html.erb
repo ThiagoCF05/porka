@@ -1,0 +1,41 @@
+<p>
+  <b>ID:</b>
+  <%= @produto.id %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @produto.nome %>
+</p>
+
+<p>
+  <b>Subcategoria:</b>
+  <%= @produto.subcategoria.nome %>
+</p>
+
+<p>
+  <b>Cooperativa:</b>
+  <%= @produto.cooperativa.nome %>
+</p>
+
+<p>
+  <b>Descrição:</b>
+  <%= @produto.descricao %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @produto.status.descricao %>
+</p>
+
+<p>
+  <b>Criado em:</b>
+  <%= @produto.created_at %>
+</p>
+
+<p>
+  <b>Modificado em:</b>
+  <%= @produto.updated_at %>
+</p>
+
+<%= link_to 'Voltar', admin_produtos_path %>

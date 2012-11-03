@@ -4,7 +4,7 @@ class Admin::CotacaosController < ApplicationController
     # GET admin/cotacaos
   # GET admin/cotacaos.json
   def index
-    @cotacaos = Cotacao.all
+    @cotacaos = Cotacao.where(:status_id => Status.find_by_descricao('Ativo'))
 
     respond_to do |format|
       format.html # index.html.erb
@@ -76,7 +76,7 @@ class Admin::CotacaosController < ApplicationController
   # DELETE admin/cotacaos/1.json
   def destroy
     @cotacao = Cotacao.find(params[:id])
-    @cotacao.destroy
+    @cotacao.update_attributes :status => Status.find_by_descricao('Inativo')
 
     respond_to do |format|
       format.html { redirect_to admin_cotacaos_path }

@@ -4,7 +4,7 @@ class Admin::AdministradoresController < ApplicationController
   # GET admin/administradores
   # GET admin/administradores.json
   def index
-    @administradores = Administrador.all
+    @administradores = Administrador.where(:status_id => Status.find_by_descricao('Ativo'))
 
     respond_to do |format|
       format.html # index.html.erb
@@ -75,7 +75,7 @@ class Admin::AdministradoresController < ApplicationController
   # DELETE admin/administradores/1.json
   def destroy
     @administrador = Administrador.find(params[:id])
-    @administrador.destroy
+    @administrador.update_attributes :status => Status.find_by_descricao('Inativo')
 
     respond_to do |format|
       format.html { redirect_to admin_administradores_path }

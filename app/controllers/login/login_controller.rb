@@ -1,7 +1,11 @@
 class Login::LoginController < ApplicationController
   
   def index
-    render 'index.html.erb'
+    if current_administrator.nil?
+      render 'index.html.erb'
+    else
+      render 'home.html.erb'
+    end    
   end
   
   def create

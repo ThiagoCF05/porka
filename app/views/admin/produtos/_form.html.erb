@@ -1,0 +1,41 @@
+<%= form_for [:admin, @produto] do |f| %>
+  <% if @produto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@produto.errors.count, "error") %> Erro ao Salvar</h2>
+
+      <ul>
+      <% @produto.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+  
+  <div class="field">
+    <label>Subcategoria</label><br />
+    <%= f.select :subcategoria_id, Subcategoria.all.collect {|subcategoria| [subcategoria.nome, subcategoria.id]}  %>
+  </div>
+  
+  <div class="field">
+    <label>Cooperativa</label><br />
+    <%= f.select :cooperativa_id, Cooperativa.all.collect {|cooperativa| [cooperativa.nome, cooperativa.id]}  %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :descricao %><br />
+    <%= f.text_area :descricao, :cols => 40, :rows => 20 %>
+  </div>
+  
+  <div class="field">
+    <label>Status</label><br />
+    <%= f.select :status_id, Status.all.collect {|status| [status.descricao, status.id]}  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,36 @@
+<%= form_for [:admin, @subcategoria] do |f| %>
+  <% if @subcategoria.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subcategoria.errors.count, "error") %> Erro ao Salvar</h2>
+
+      <ul>
+      <% @subcategoria.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :descricao %><br />
+    <%= f.text_area :descricao, :cols => 40, :rows => 20 %>
+  </div>
+  
+  <div class="field">
+    <label>Categoria</label><br />
+    <%= f.select :categoria_id, Categoria.all.collect {|categoria| [categoria.nome, categoria.id]}  %>
+  </div>
+  
+  <div class="field">
+    <label>Status</label><br />
+    <%= f.select :status_id, Status.all.collect {|status| [status.descricao, status.id]}  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

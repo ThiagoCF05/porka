@@ -1,0 +1,36 @@
+<p>
+  <b>ID:</b>
+  <%= @subcategoria.id %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @subcategoria.nome %>
+</p>
+
+<p>
+  <b>Descrição:</b>
+  <%= @subcategoria.descricao %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @subcategoria.status.descricao %>
+</p>
+
+<p>
+  <b>Categoria:</b>
+  <%= @subcategoria.categoria.nome %>
+</p>
+
+<p>
+  <b>Criado em:</b>
+  <%= @subcategoria.created_at %>
+</p>
+
+<p>
+  <b>Modificado em:</b>
+  <%= @subcategoria.updated_at %>
+</p>
+
+<%= link_to 'Voltar', admin_subcategorias_path %>

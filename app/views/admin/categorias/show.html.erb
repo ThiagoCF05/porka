@@ -1,0 +1,31 @@
+<p>
+  <b>ID:</b>
+  <%= @categoria.id %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @categoria.nome %>
+</p>
+
+<p>
+  <b>Descrição:</b>
+  <%= @categoria.descricao %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @categoria.status.descricao %>
+</p>
+
+<p>
+  <b>Criado em:</b>
+  <%= @categoria.created_at %>
+</p>
+
+<p>
+  <b>Modificado em:</b>
+  <%= @categoria.updated_at %>
+</p>
+
+<%= link_to 'Voltar', admin_categorias_path %>
