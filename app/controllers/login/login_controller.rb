@@ -9,10 +9,15 @@ class Login::LoginController < ApplicationController
   end
   
   def create
-    @administrador = Administrador.where :username => params[:username], :senha => params[:senha]
-    
+    @administrador = Administrador.find_by_username_and_senha(params[:username], params[:senha])    
     if @administrador == nil
       flash[:notice] = 'Falha no Login'
+      session[:current_administrator_id] = nil
+      render 'index.html.erb'
+    else
+      session[:current_administrator_id] = @administrador.id
+      render 'home.html.erb'
+    end
   end
   
   def destroy

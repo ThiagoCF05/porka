@@ -18,6 +18,10 @@ cooperativa = Cooperativa.create :nome => "Cooperativa de Teste",
   :senha => "123456", :username => "teste", :email => "teste@teste.com.br",
   :tipo_pessoa => "F", :documento => 466605845, :status_id => status
 
+administrador = Administrador.create :nome => "Thiago Castro Ferreira",
+  :senha => "admin", :username => "admin1", :email => "admin@admin.com.br",
+  :tipo_pessoa => "F", :documento => 466605845, :status_id => status
+
   telefone = Telefone.create :telefonavel_id => cooperativa, :ddd => 11, :numero => 985616083
   
   estado = Estado.create :nome => "SP"

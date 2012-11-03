@@ -14,7 +14,7 @@ class MainController < ApplicationController
   end
   
   def getCooperativas
-    @coopertativas = Cooperativa.all.shuffle
+    @cooperativas = Cooperativa.all.shuffle
     @cooperativas = @cooperativas[0..5]
     return @cooperativas
   end
@@ -25,6 +25,7 @@ class MainController < ApplicationController
   end
   
   def getDestaque
-    @destaque = Destaque.order("created_at desc").limit(10)
+    @destaque = Destaque.order("created_at desc").limit(1)[0]
+    return @destaque
   end
 end

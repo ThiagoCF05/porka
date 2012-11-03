@@ -1,0 +1,27 @@
+<h1>DESTAQUES</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Oferta</th>
+    <th>Cooperativa</th>
+    <th>Data Início</th>
+    <th>Data Fim</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @destaques.each do |destaque| %>
+  <tr>
+    <td><%= destaque.id %></td>
+    <td><%= destaque.oferta.id %></td>
+    <td><%= destaque.oferta.cotacao.cooperativa.nome %></td>
+    <td><%= destaque.oferta.data_inicio %></td>
+    <td><%= destaque.oferta.data_fim %></td> 
+    <td><%= destaque.status.descricao %></td>   
+    <td><%= link_to 'Show Oferta', admin_oferta_path(destaque.oferta) %></td> 
+    <td><%= link_to 'Destroy', [:admin,destaque] , :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

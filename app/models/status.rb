@@ -7,4 +7,5 @@ class Status < ActiveRecord::Base
   has_one :pagamento
   has_one :produto
   has_one :subcategoria
+  has_one :destaque
 end

@@ -56,10 +56,9 @@ ActiveRecord::Schema.define(:version => 20121031113630) do
   end
 
   create_table "destaques", :id => false, :force => true do |t|
-    t.integer  "id",          :limit => 8, :null => false
-    t.integer  "oferta_id",   :limit => 8, :null => false
-    t.datetime "data_inicio"
-    t.datetime "data_final"
+    t.integer  "id",         :limit => 8, :null => false
+    t.integer  "oferta_id",  :limit => 8, :null => false
+    t.integer  "status_id",               :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -120,8 +119,8 @@ ActiveRecord::Schema.define(:version => 20121031113630) do
 
   create_table "produtos", :id => false, :force => true do |t|
     t.integer  "id",              :limit => 8,  :null => false
-    t.integer  "cooperativa_id",  :limit => 8
-    t.integer  "subcategoria_id"
+    t.integer  "cooperativa_id",  :limit => 8,  :null => false
+    t.integer  "subcategoria_id",               :null => false
     t.string   "nome",            :limit => 80, :null => false
     t.text     "descricao"
     t.integer  "status_id",                     :null => false
@@ -167,6 +166,7 @@ ActiveRecord::Schema.define(:version => 20121031113630) do
     t.integer  "documento",       :limit => 8
     t.string   "sexo",            :limit => 1
     t.integer  "status_id",                     :null => false
+    t.text     "descricao"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"

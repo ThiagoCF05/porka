@@ -10,6 +10,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @ofertas.each do |oferta| %>
@@ -18,7 +19,8 @@
     <td><%= oferta.cotacao.cooperativa.nome %></td>
     <td><%= oferta.data_inicio %></td>
     <td><%= oferta.data_fim %></td> 
-    <td><%= oferta.status.descricao %></td>    
+    <td><%= oferta.status.descricao %></td>   
+    <td><%= link_to 'Tornar Destaque', create_admin_destaque_path(oferta) %></td> 
     <td><%= link_to 'Show', admin_oferta_path(oferta) %></td>
      <td><%= link_to 'Edit', edit_admin_oferta_path(oferta) %></td>
     <td><%= link_to 'Destroy', [:admin,oferta] , :confirm => 'Are you sure?', :method => :delete %></td>

@@ -3,8 +3,7 @@ class CreateDestaques < ActiveRecord::Migration
     create_table :destaques, :id => false do |t|
       t.integer :id, :limit => 8, :null => false
       t.integer :oferta_id, :limit => 8, :null => false
-      t.datetime :data_inicio
-      t.datetime :data_final
+      t.integer :status_id, :null => false
       t.timestamps
     end
   end

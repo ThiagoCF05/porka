@@ -1,12 +1,12 @@
-<h1>Destaque</h1>
+<h1><%= link_to 'Destaque', oferta_path(@destaque.oferta) %></h1>
 <div>
-  <%= @destaque.cotacao.id %><br />
-  <%= @destaque.data_inicio %><br />
-  <%= @destaque.data_fim %><br />
-  <%= @destaque.valor_convite %><br />
+  <%= @destaque.oferta.id %><br />
+  <%= @destaque.oferta.data_inicio %><br />
+  <%= @destaque.oferta.data_fim %><br />
+  <%= @destaque.oferta.valor_convite %><br />
 </div>
 
-<h1>Ofertas</h1>
+<h1><%= link_to 'Ofertas', ofertas_path %></h1>
 
 <table>
   <tr>
@@ -17,18 +17,28 @@
   <tr>
   
   <% @ofertas.each do |oferta| %>
-    <tr><%= oferta.cotacao.id %></tr>
-    <tr><%= oferta.data_inicio %></tr>
-    <tr><%= oferta.data_fim %></tr>
-    <tr><%= oferta.valor_convite %></tr>
+    <tr>
+      <td><%= oferta.cotacao.id %></td>
+      <td><%= oferta.data_inicio %></td>
+      <td><%= oferta.data_fim %></td>
+      <td><%= oferta.valor_convite %></td>
+    </tr>    
   <% end %>
 </table>
 <br />
 
-<h1>Cooperativas</h1>
+<h1><%= link_to 'Cooperativas', cooperativas_path %></h1>
 <table>
   <tr>
-    <th></th>
+    <th>Nome</th>
+    <th>Status</th>
     <th></th>
   </tr>
+  <% @cooperativas.each do |cooperativa| %>
+    <tr>
+      <td><%= cooperativa.nome %></td>
+      <td><%= cooperativa.status.descricao %></td>
+      <td><%= link_to 'Show', cooperativa_path(cooperativa) %></td>
+    </tr>
+  <% end %>
 </table>

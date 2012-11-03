@@ -1,6 +1,7 @@
 Porka::Application.routes.draw do
   resources :usuarios
   resources :clientes
+  resources :destaques
   resources :administradores
   resources :cooperativas
   resources :telefones
@@ -9,7 +10,7 @@ Porka::Application.routes.draw do
   resources :cotacaos
   resources :ofertas
   
-  match '/' => 'Main#index'
+  root :to => 'Main#index'
   
   match 'usuarios/:id/novo-telefone' => 'Telefones#newUsuario', :as => 'new_telefone_usuario'
   match 'usuarios/:id/novo-endereco' => 'Enderecos#newUsuario', :as => 'new_endereco_usuario'
@@ -19,19 +20,22 @@ Porka::Application.routes.draw do
   
   match 'admin/ofertas/aprovar/:id' => 'Admin::Ofertas#aprovar', :as => 'new_admin_aprovacao_cotacao'
   
-  match 'admin/login/create/' => 'Admin::Logins#create'
+  match 'admin/home' => 'Admin::Logins#create'
   
-  namespace :admin do
-      resources :usuarios
+  match 'admin/oferta/:id/tornar-destaque' => 'Admin::Destaques#create', :as => 'create_admin_destaque'
+  
+  namespace :admin do      
       resources :administradores
       resources :cooperativas
-      resources :telefones
+      resources :cotacaos
       resources :clientes 
-      resources :cotacaos  
+      resources :destaques
+      resources :telefones    
       resources :ofertas 
       resources :categorias
       resources :subcategorias
       resources :produtos
+      resources :usuarios
       
       root :to => 'Logins#index'
    end
