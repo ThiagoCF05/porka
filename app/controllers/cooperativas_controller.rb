@@ -1,8 +1,18 @@
+require 'will_paginate/array'
+
 class CooperativasController < ApplicationController
   # GET cooperativas
   # GET cooperativas.json
   def index
-    @cooperativas = Cooperativa.where(:status_id => Status.find_by_descricao('Ativo')).paginate(:page => params[:page], :per_page => 24).order("created_at desc")
+    @cooperativas = []
+    if params[:subcategoria_id].nil?
+      @cooperativas = Cooperativa.where(:status_id => Status.find_by_descricao('Ativo')).paginate(:page => params[:page], :per_page => 24).order("nome")
+    else
+      Produto.where(:subcategoria_id => Subcategoria.find(params[:subcategoria_id]), :status_id => Status.find_by_descricao('Ativo')).each do |produto|
+        @cooperativas.push(produto.cooperativa)
+      end
+      @cooperativas = @cooperativas.paginate(:page => params[:page], :per_page => 24)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -22,29 +32,18 @@ class CooperativasController < ApplicationController
   end
 
   def seleciona_categoria
-    @cooperativas = Cooperativa.where(:status_id => Status.find_by_descricao('Ativo')).paginate(:page => params[:page], :per_page => 24).order("created_at desc")
+    @cooperativas = Cooperativa.where(:status_id => Status.find_by_descricao('Ativo')).paginate(:page => params[:page], :per_page => 24).order("nome")
     @subcategorias = Subcategoria.where :categoria_id => Categoria.find(params[:categoria_id])
-    
+
     respond_to do |format|
-      format.html { render :action => "index"}
+      format.html { render :template => 'cooperativas/index'}
     end
   end
-  
-  def seleciona_subcategoria
-    @cooperativas = []
-    Produto.where(:subcategoria_id => Subcategoria.find(params[:subcategoria_id])).each do |produto|
-      @cooperativas.push produto.cooperativa
-    end
-    
-    respond_to do |format|
-      format.html { render 'index.html.erb'}
-    end
-  end
-  
+
   # GET cooperativas/new
   # GET cooperativas/new.json
   def new
-    @cooperativa = Cooperativa.new    
+    @cooperativa = Cooperativa.new
 
     respond_to do |format|
       format.html { render :action => "new" }
@@ -64,7 +63,7 @@ class CooperativasController < ApplicationController
 
     respond_to do |format|
       if @cooperativa.save
-        format.html { redirect_to @cooperativa, :notice => 'Exemplo was successfully created.' }
+        format.html { redirect_to @cooperativa, :notice => 'Cooperativa was successfully created.' }
         format.json { render :json => @cooperativa, :status => :created, :location => @cooperativa }
       else
         format.html { render :action => "new" }
@@ -80,7 +79,7 @@ class CooperativasController < ApplicationController
 
     respond_to do |format|
       if @cooperativa.update_attributes(params[:cooperativa])
-        format.html { redirect_to @cooperativa, :notice => 'Exemplo was successfully updated.' }
+        format.html { redirect_to @cooperativa, :notice => 'Cooperativa was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }

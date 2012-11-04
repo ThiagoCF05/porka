@@ -9,18 +9,18 @@ class EnderecosController < ApplicationController
       format.json { render :json => @telefones }
     end
   end
-  
+
   # GET /usuarios/{:id}/enderecos
   # GET /usuarios/{:id}/enderecos.json
   def indexUsuario
     @enderecos = Endereco.where(:usuario => Usuario.find(params[:id]))
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @enderecos }
     end
   end
-  
+
    # GET /enderecos/new
   # GET /enderecos/new.json
   def new
@@ -31,7 +31,7 @@ class EnderecosController < ApplicationController
       format.json { render :json => @endereco }
     end
   end
-  
+
    # GET /enderecos/newUsuario/{:id}
   # GET /enderecos/newUsuario/{:id}.json
   def newUsuario
@@ -44,7 +44,7 @@ class EnderecosController < ApplicationController
       format.json { render :json => @endereco }
     end
   end
-  
+
    # GET /enderecos/newCliente
   # GET /enderecos/newCliente.json
   def newCliente
@@ -76,7 +76,7 @@ class EnderecosController < ApplicationController
         else
           format.html { redirect_to Cliente.find(@telefone.enderecavel_id), :notice => 'Exemplo was successfully created.' }
           format.json { render :json => @endereco, :status => :created, :location => @endereco }
-        end 
+        end
       else
         format.html { render :action => "new" }
         format.json { render :json => @endereco.errors, :status => :unprocessable_entity }
@@ -92,12 +92,12 @@ class EnderecosController < ApplicationController
     respond_to do |format|
       if @endereco.update_attributes(params[:endereco])
         if @endereco.enderecavel_type == 'Usuario'
-          format.html { redirect_to Usuario.find(@endereco.enderecavel_id), :notice => 'Exemplo was successfully updated.' }
+          format.html { redirect_to Usuario.find(@endereco.enderecavel_id), :notice => 'Endereço was successfully updated.' }
           format.json { head :ok }
         else
-          format.html { redirect_to Cliente.find(@endereco.enderecavel_id), :notice => 'Exemplo was successfully created.' }
+          format.html { redirect_to Cliente.find(@endereco.enderecavel_id), :notice => 'Endereço was successfully created.' }
           format.json { render :json => @endereco, :status => :created, :location => @endereco }
-        end 
+        end
       else
         format.html { render :action => "edit" }
         format.json { render :json => @endereco.errors, :status => :unprocessable_entity }
@@ -115,12 +115,12 @@ class EnderecosController < ApplicationController
 
     respond_to do |format|
         if @enderecavel_type == 'Usuario'
-          format.html { redirect_to Usuario.find(@enderecavel_id), :notice => 'Exemplo was successfully updated.' }
+          format.html { redirect_to Usuario.find(@enderecavel_id), :notice => 'Endereço was successfully updated.' }
           format.json { head :ok }
         else
-          format.html { redirect_to Cliente.find(@enderecavel_id), :notice => 'Exemplo was successfully created.' }
+          format.html { redirect_to Cliente.find(@enderecavel_id), :notice => 'Endereço was successfully created.' }
           format.json { head :ok }
-        end 
+        end
     end
   end
 end
