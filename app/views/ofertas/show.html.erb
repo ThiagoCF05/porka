@@ -1,0 +1,42 @@
+<p>
+  <b>ID:</b>
+  <%= @oferta.id %>
+</p>
+
+<p>
+  <b>Cooperativa:</b>
+  <%= @oferta.cotacao.cooperativa.nome %>
+</p>
+
+<p>
+  <b>Data Início:</b>
+  <%= @oferta.data_inicio %>
+</p>
+
+<p>
+  <b>Data Fim:</b>
+  <%= @oferta.data_fim %>
+</p>
+
+<p>
+  <b>Valor do Convite:</b>
+  <%= @oferta.valor_convite %>
+</p>
+
+<p>
+  <b>Porcentagem Instituição:</b>
+  <%= @oferta.porcentagem_instituicao %>
+</p>
+
+<p>
+  <b>Descrição:</b>
+  <%= @oferta.cotacao.descricao %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @oferta.status.descricao %>
+</p>
+<br />
+
+<%= link_to 'Voltar', ofertas_path %>

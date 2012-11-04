@@ -4,11 +4,6 @@
 </p>
 
 <p>
-  <b>Senha:</b>
-  <%= @cooperativa.senha %>
-</p>
-
-<p>
   <b>Username:</b>
   <%= @cooperativa.username %>
 </p>
@@ -16,11 +11,6 @@
 <p>
   <b>Email:</b>
   <%= @cooperativa.email %>
-</p>
-
-<p>
-  <b>Data de Cadastro:</b>
-  <%= @cooperativa.data_cadastro %>
 </p>
 
 <p>
@@ -49,12 +39,6 @@
   <%= @cooperativa.descricao %>
 </p>
 
-<p>
-  <b>Status:</b>
-  <%= @cooperativa.status.descricao %>
-</p>
-
 <br />
 
-<%= link_to 'Editar', edit_admin_cooperativa_path(@cooperativa) %> |
-<%= link_to 'Voltar', admin_cooperativas_path %>
+<%= link_to 'Voltar', cooperativas_path %>

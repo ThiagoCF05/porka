@@ -36,6 +36,10 @@
     <%= f.text_field :documento %>
   </div>  
   <div class="field">
+    <%= f.label :descricao %><br />
+    <%= f.text_area :descricao %>
+  </div> 
+  <div class="field">
     <label>Status</label><br />
     <% status_array = Status.all.map { |status| [status.descricao, status.id] } %>
     <%= f.select :status_id, options_for_select(status_array)  %>
