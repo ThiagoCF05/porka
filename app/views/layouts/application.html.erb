@@ -1,16 +1,141 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Porka</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta charset="UTF-8">
+  <title>Porka Social</title>
+  <!-- Favicon -->
+  <link rel="SHORTCUT ICON" href="">
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+
+  <!--link rel="stylesheet" type="text/css" href="./porka_files/core"-->
+  <!--link rel="stylesheet" type="text/css" href="./porka_files/deal"-->
+  <style type="text/css">
+        #mask
+        {
+            z-index: 99999;
+        }
+  </style>
+
   <%= csrf_meta_tags %>
+
 </head>
+
 <body>
+    <div class="header">
+        <div class="row">
+            <div class="grid2">
+				<a href="/" title="Porka Social" style="font-size:18pt">
+					<img src="/assets/Logo_Porka.jpg" style="height:130px" />
+					Porka Social
+				</a>
+				</div>
+            <!-- /logo -->
+            <div class="nav grid10">
+                <div class="user_nav clearfix">
+                    <div class="user_menu">
+                        <ul class="not_logado" id="not_loggedin_user_menu" style="display: block;">
+                            <li><a href="" title="Cadastre-se" id="SignUpButton">Cadastre-se</a></li>
+                            <li><a href="" title="Entre com a sua conta" id="topLogin">Entrar</a></li>
+                        </ul>
+                    </div>
+                    <!-- /user_menu -->
+                </div>
+                <!-- /user_nav clearfix-->
+            </div>
+            <!-- /nav -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /header -->
+    <div class="nav-bar">
+        <div class="row">
+            <div class="grid13">
+                <a href="" title="Todas as ofertas" class="">Home</a>
+				<a href="" title="Produtos" class=""> Produtos</a>
+				<a href="" title="Cooperativas" class=""> Cooperativas</a>
+				<a href="" title="Divulgue sua Cooperativa" class="" >Divulgue sua Cooperativa</a>
+            </div>
+            <div class="grid4">
+                <a href="" title="Receba nossas NotÌcias" class="">Receba NotÌcias </a>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- nav-bar -->
 
-<p id="notice"><%= notice %></p>
+  <%= yield %>
 
-<%= yield %>
+  <!-- FOOTER -->
+
+
+    <div class="footer">
+        <div class="row">
+            <div class="grid4">
+                <div class="box" style="position: relative;">
+
+                </div>
+            </div>
+            <div class="grid4">
+                <div class="box">
+
+                </div>
+            </div>
+            <div class="grid4">
+                <div class="box">
+
+                </div>
+            </div>
+            <hr>
+            <div class="grid3">
+                <h3>Grupo 1</h3>
+                <ul>
+                    <li><a href="" title="Item 1">Item 1</a></li>
+                    <li><a href="" title="Item 2">Item 2</a></li>
+                    <li><a href="" title="Item 3">Item 3</a></li>
+                    <li><a href="" title="Item 4">Item 4</a></li>
+                </ul>
+            </div>
+            <div class="grid3">
+                <h3>Grupo 2</h3>
+                <ul>
+                    <li><a href="" title="Item 1">Item 1</a></li>
+                    <li><a href="" title="Item 2">Item 2</a></li>
+                    <li>&nbsp;</li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="grid3">
+                <h3>Grupo 3</h3>
+                <ul>
+                    <li><a href="" title="Item 1">Item 1</a></li>
+                </ul>
+            </div>
+            <div class="grid3">
+                <h3>
+                    Grupo 4</h3>
+                <ul>
+                    <li><a href="" title="Item 1">Item 1</a></li>
+                    <li><a href="">Item 2</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /footer -->
+    <canvas id="ondas" width="1423" height="40"></canvas>
+    <div class="pos_footer">
+        <div class="row">
+            <p class="grid8 small">
+                © 2012 Porka Social Todos os direitos reservados.</p>
+            <p class="grid4 fright">
+                <a href="" target="_blank" title="Termos de uso"> Termos de uso</a> | <a href=""
+                        target="_blank" title="PolÌtica de PrÌvacidade">Política de PrÌvacidade</a></p>
+        </div>
+    </div>
+
+  <!-- /FOOTER -->
 
 </body>
 </html>

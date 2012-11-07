@@ -1,44 +1,34 @@
-<h1><%= link_to 'Destaque', oferta_path(@destaque.oferta) %></h1>
-<div>
-  <%= @destaque.oferta.id %><br />
-  <%= @destaque.oferta.data_inicio %><br />
-  <%= @destaque.oferta.data_fim %><br />
-  <%= @destaque.oferta.valor_convite %><br />
+<div class="content ">
+    <div class="row">
+
+        <!-- AQUI ENTRA A PARTIAL DA OFERTA PRINCIPAL -->
+        <%= render "/common/ofertas/oferta_principal" %>
+
+
+        <div class="grid12" style="margin-top: 5px;">
+            <div class="other_deals_list">
+                <h2 class="title-offer">Mais Recentes</h2>
+
+                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
+                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
+                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
+                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
+                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
+                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
+                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
+                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
+
+            </div>
+        </div>
+        <div class="grid12" style="margin-top: 5px;">
+            <p>
+            <a href="" id="MaisOfertas" class="link-ver-mais" title="Veja mais ofertas">Carregar mais ofertas</a></p>
+            <p>
+            <a href="" class="link-ver-mais" id="ShowAllOffer" title="Veja Todas ofertas" style="display: none;">Ofertas recentes</a></p>
+        </div>
+        </script>
+
+    </div>
+    <!-- /row -->
 </div>
-
-<h1><%= link_to 'Ofertas', ofertas_path %></h1>
-
-<table>
-  <tr>
-    <th>Cotação</th>
-    <th>Data Início</th>
-    <th>Data Final</th>
-    <th>Valor</th>
-  <tr>
-  
-  <% @ofertas.each do |oferta| %>
-    <tr>
-      <td><%= oferta.cotacao.id %></td>
-      <td><%= oferta.data_inicio %></td>
-      <td><%= oferta.data_fim %></td>
-      <td><%= oferta.valor_convite %></td>
-    </tr>    
-  <% end %>
-</table>
-<br />
-
-<h1><%= link_to 'Cooperativas', cooperativas_path %></h1>
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Status</th>
-    <th></th>
-  </tr>
-  <% @cooperativas.each do |cooperativa| %>
-    <tr>
-      <td><%= cooperativa.nome %></td>
-      <td><%= cooperativa.status.descricao %></td>
-      <td><%= link_to 'Show', cooperativa_path(cooperativa) %></td>
-    </tr>
-  <% end %>
-</table>
+<!-- / content -->
