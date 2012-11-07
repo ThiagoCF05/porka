@@ -1,6 +1,6 @@
-class Admin::CategoriasController < ApplicationController
+class Admin::CategoriasController < Admin::ApplicationController
   before_filter :administrador_logado
-  
+
   # GET admin/categorias
   # GET admin/categorias.json
   def index

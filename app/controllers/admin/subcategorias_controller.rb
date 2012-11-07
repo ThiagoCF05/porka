@@ -1,6 +1,6 @@
-class Admin::SubcategoriasController < ApplicationController
+class Admin::SubcategoriasController < Admin::ApplicationController
   before_filter :administrador_logado
-  
+
   # GET admin/subcategorias
   # GET admin/subcategorias.json
   def index

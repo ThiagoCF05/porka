@@ -10,60 +10,65 @@
       </ul>
     </div>
   <% end %>
-  
+
   <div class="field">
     <b>Cotação</b>
     <%= @oferta.cotacao.id %>
     <%= f.hidden_field :cotacao_id %>
   </div>
-  
+
   <div class="field">
     <b>Administrador</b>
     <%= @oferta.administrador.nome %>
     <%= f.hidden_field :administrador_id %>
   </div>
-  
+
    <div class="field">
     <b>Cooperativa</b>
     <%= @oferta.cotacao.cooperativa.nome %>
   </div>
-  
+
   <div class="field">
     <%= f.label :data_inicio %><br />
     <%= date_select 'oferta', 'data_inicio', :order => [:day, :month, :year] %>
   </div>
-  
+
   <div class="field">
     <%= f.label :date_fim %><br />
     <%= date_select 'oferta', 'data_fim', :order => [:day, :month, :year] %>
   </div>
-  
+
   <div class="field">
     <%= f.label :total_vendas %><br />
     <%= f.text_field :total_vendas %>
   </div>
-  
+
   <div class="field">
     <%= f.label :valor_convite %><br />
     <%= f.text_field :valor_convite %>
   </div>
-  
+
+  <div class="field">
+    <%= f.label :valor_convite %><br />
+    <%= f.text_field :valor_convite_promocional %>
+  </div>
+
   <div class="field">
     <%= f.label :porcentagem_instituicao %><br />
     <%= f.text_field :porcentagem_instituicao %>
   </div>
-  
+
   <div class="field">
     <label>Status</label><br />
     <% status_array = Status.all.map { |status| [status.descricao, status.id] } %>
     <%= f.select :status_id, options_for_select(status_array)  %>
-  </div> 
-  
+  </div>
+
   <div class="field">
     <b>Descrição</b><br />
     <%= @oferta.cotacao.descricao %>
   </div>
-  
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,6 +1,6 @@
-class Admin::ProdutosController < ApplicationController
+class Admin::ProdutosController < Admin::ApplicationController
   before_filter :administrador_logado
-  
+
   # GET admin/produtos
   # GET admin/produtos.json
   def index

@@ -1,4 +1,4 @@
-class Admin::TelefonesController < ApplicationController
+class Admin::TelefonesController < Admin::ApplicationController
   # GET /telefones
   # GET /telefones.json
   def index
@@ -9,18 +9,18 @@ class Admin::TelefonesController < ApplicationController
       format.json { render :json => @telefones }
     end
   end
-  
+
   # GET /usuarios/{:id}/telefones
   # GET /usuarios/{:id}/telefones.json
   def indexUsuario
     @telefones = Telefone.where(:usuario => Usuario.find(params[:id]))
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @telefones }
     end
   end
-  
+
    # GET /telefones/new
   # GET /telefones/new.json
   def new
@@ -31,7 +31,7 @@ class Admin::TelefonesController < ApplicationController
       format.json { render :json => @telefone }
     end
   end
-  
+
   # GET /telefones/newUsuario/{:id}
   # GET /telefones/newUsuario/{:id}.json
   def newUsuario
@@ -44,7 +44,7 @@ class Admin::TelefonesController < ApplicationController
       format.json { render :json => @telefone }
     end
   end
-  
+
    # GET /telefones/newCliente
   # GET /telefones/newCliente.json
   def newCliente
@@ -52,7 +52,7 @@ class Admin::TelefonesController < ApplicationController
     @telefone.cooperativa = Cooperativa.find(params[:id])
     @telefone.telefonavel_id = params[:id]
     @telefone.telefonavel_type = 'Cliente'
-    
+
     respond_to do |format|
       format.html #{ render :action => "new" }
       format.json { render :json => @telefone }
@@ -77,7 +77,7 @@ class Admin::TelefonesController < ApplicationController
         else
           format.html { redirect_to [:admin, Cliente.find(@telefone.telefonavel_id)], :notice => 'Exemplo was successfully created.' }
           format.json { render :json => @telefone, :status => :created, :location => @telefone }
-        end        
+        end
       else
         format.html { render :action => "new" }
         format.json { render :json => @telefone.errors, :status => :unprocessable_entity }
@@ -98,7 +98,7 @@ class Admin::TelefonesController < ApplicationController
         else
           format.html { redirect_to [:admin, Cliente.find(@telefone.telefonavel_id)], :notice => 'Exemplo was successfully created.' }
           format.json { render :json => @telefone, :status => :created, :location => @telefone }
-        end        
+        end
       else
         format.html { render :action => "edit" }
         format.json { render :json => @telefone.errors, :status => :unprocessable_entity }
@@ -121,7 +121,7 @@ class Admin::TelefonesController < ApplicationController
         else
           format.html { redirect_to [:admin, Cliente.find(@telefonavel_id)], :notice => 'Exemplo was successfully created.' }
           format.json { head :ok }
-        end  
+        end
     end
   end
 end

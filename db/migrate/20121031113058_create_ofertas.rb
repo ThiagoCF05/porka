@@ -8,6 +8,7 @@ class CreateOfertas < ActiveRecord::Migration
       t.datetime :data_fim
       t.integer :total_vendas, :null => false
       t.float :valor_convite, :null => false
+      t.float :valor_convite_promocional
       t.float :porcentagem_instituicao, :null => false
       t.integer :status_id, :null => false
       t.timestamps

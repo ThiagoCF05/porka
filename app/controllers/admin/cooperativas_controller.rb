@@ -1,6 +1,6 @@
-class Admin::CooperativasController < ApplicationController
+class Admin::CooperativasController < Admin::ApplicationController
   before_filter :administrador_logado
-  
+
   # GET admin/cooperativas
   # GET admin/cooperativas.json
   def index

@@ -1,6 +1,6 @@
-class Admin::DestaquesController < ApplicationController
+class Admin::DestaquesController < Admin::ApplicationController
   before_filter :administrador_logado
-  
+
   # GET admin/destaques
   # GET admin/destaques.json
   def index

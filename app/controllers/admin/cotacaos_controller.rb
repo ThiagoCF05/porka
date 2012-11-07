@@ -1,6 +1,6 @@
-class Admin::CotacaosController < ApplicationController
+class Admin::CotacaosController < Admin::ApplicationController
   before_filter :administrador_logado
-  
+
     # GET admin/cotacaos
   # GET admin/cotacaos.json
   def index

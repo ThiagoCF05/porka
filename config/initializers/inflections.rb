@@ -2,6 +2,7 @@
 
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'administrador', 'administradores'
+  inflect.irregular 'imagem', 'imagens'
   inflect.irregular 'oferta', 'ofertas'
   inflect.irregular 'categoria', 'categorias'
   inflect.irregular 'subcategoria', 'subcategorias'
