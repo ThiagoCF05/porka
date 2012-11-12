@@ -2,21 +2,14 @@
     <div class="row">
 
         <!-- AQUI ENTRA A PARTIAL DA OFERTA PRINCIPAL -->
-        <%= render "/common/ofertas/oferta_principal" %>
+        <%= render "/common/ofertas/oferta_principal", :locals => { :destaque => @destaque } %>
 
 
         <div class="grid12" style="margin-top: 5px;">
             <div class="other_deals_list">
                 <h2 class="title-offer">Mais Recentes</h2>
 
-                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
-                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
-                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
-                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
-                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
-                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
-                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
-                <%= render :partial => "/common/ofertas/oferta_item_lista" %>
+                <%= render :partial => "/common/ofertas/oferta_item_lista", :locals => { :ofertas => @ofertas } %>
 
             </div>
         </div>

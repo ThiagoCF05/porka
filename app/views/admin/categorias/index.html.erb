@@ -9,7 +9,7 @@
     <th></th>
     <th></th>
   </tr>
-  
+
   <% @categorias.each do |categoria| %>
     <tr>
       <td><%= categoria.id %></td>
@@ -17,7 +17,7 @@
       <td><%= categoria.status.descricao %></td>
       <td><%= link_to 'Show', admin_categoria_path(categoria) %></td>
       <td><%= link_to 'Edit', edit_admin_categoria_path(categoria) %></td>
-      <td><%= link_to 'Destroy', [:admin,categoria] , :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= button_to 'Destroy', [:admin,categoria] , :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>

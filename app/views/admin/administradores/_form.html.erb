@@ -28,8 +28,8 @@
     <%= f.email_field :email %>
   </div>
   <div class="field">
-    <%= f.label :date_nascimento %><br />
-    <%= date_select 'administrador', 'date_nascimento', :start_year => 1920, :order => [:day, :month, :year] %>
+    <%= f.label :data_nascimento %><br />
+    <%= date_select 'administrador', 'data_nascimento', :start_year => 1920, :order => [:day, :month, :year] %>
   </div>
   <div class="field">
     <%= f.label :tipo_pessoa %><br />
@@ -40,7 +40,7 @@
   </div>
   <div class="field">
     <%= f.label 'Sexo' %><br />
-    <%= f.radio_button :sexo, 'M', :checked => true %> 
+    <%= f.radio_button :sexo, 'M', :checked => true %>
     <%= label :sexo, 'Masculino' %>
     <%= f.radio_button :sexo, 'F' %>
     <%= label :sexo, 'Feminino' %>

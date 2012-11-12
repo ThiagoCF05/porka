@@ -28,6 +28,11 @@
     <%= @oferta.cotacao.cooperativa.nome %>
   </div>
 
+	<div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+
   <div class="field">
     <%= f.label :data_inicio %><br />
     <%= date_select 'oferta', 'data_inicio', :order => [:day, :month, :year] %>
@@ -49,7 +54,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :valor_convite %><br />
+    <%= f.label :valor_convite_promocional %><br />
     <%= f.text_field :valor_convite_promocional %>
   </div>
 

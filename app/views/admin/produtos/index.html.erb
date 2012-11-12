@@ -10,7 +10,7 @@
     <th></th>
     <th></th>
   </tr>
-  
+
   <% @produtos.each do |produto| %>
     <tr>
       <td><%= produto.id %></td>
@@ -19,7 +19,7 @@
       <td><%= produto.status.descricao %></td>
       <td><%= link_to 'Show', admin_produto_path(produto) %></td>
       <td><%= link_to 'Edit', edit_admin_produto_path(produto) %></td>
-      <td><%= link_to 'Destroy', [:admin,produto] , :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= button_to 'Destroy', [:admin,produto] , :confirm => 'Are you sure?', :class=>:destroy, :method => :delete %></td>
     </tr>
   <% end %>
 </table>

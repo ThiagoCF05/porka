@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :date_nascimento %><br />
-    <%= date_select 'usuario', 'date_nascimento', :start_year => 1920, :order => [:day, :month, :year] %>
+    <%= date_select 'usuario', 'data_nascimento', :start_year => 1920, :order => [:day, :month, :year] %>
   </div>
   <div class="field">
     <%= f.label :tipo_pessoa %><br />
@@ -40,14 +40,14 @@
   </div>
   <div class="field">
     <%= f.label 'Sexo' %><br />
-    <%= f.radio_button :sexo, 'M', :checked => true %> 
+    <%= f.radio_button :sexo, 'M', :checked => true %>
     <%= label :sexo, 'Masculino' %>
     <%= f.radio_button :sexo, 'F' %>
     <%= label :sexo, 'Feminino' %>
   </div>
   <div class="field">
     <%= f.label 'Status' %><br />
-    <%= f.radio_button :status, 'A', :checked => true %> 
+    <%= f.radio_button :status, 'A', :checked => true %>
     <%= label :status, 'Ativo' %>
     <%= f.radio_button :status, 'I' %>
     <%= label :status, 'Inativo' %>

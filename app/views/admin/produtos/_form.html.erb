@@ -15,22 +15,23 @@
     <%= f.label :nome %><br />
     <%= f.text_field :nome %>
   </div>
-  
+
   <div class="field">
     <label>Subcategoria</label><br />
     <%= f.select :subcategoria_id, Subcategoria.all.collect {|subcategoria| [subcategoria.nome, subcategoria.id]}  %>
   </div>
-  
+
   <div class="field">
     <label>Cooperativa</label><br />
-    <%= f.select :cooperativa_id, Cooperativa.all.collect {|cooperativa| [cooperativa.nome, cooperativa.id]}  %>
+   <% cooperativas_array = Cooperativa.where(:status_id => Status.find_by_descricao('Ativo')).map { |cooperativa| [cooperativa.nome, cooperativa.id] } %>
+    <%= f.select :cooperativa_id, options_for_select(cooperativas_array)  %>
   </div>
-  
+
   <div class="field">
     <%= f.label :descricao %><br />
     <%= f.text_area :descricao, :cols => 40, :rows => 20 %>
   </div>
-  
+
   <div class="field">
     <label>Status</label><br />
     <%= f.select :status_id, Status.all.collect {|status| [status.descricao, status.id]}  %>

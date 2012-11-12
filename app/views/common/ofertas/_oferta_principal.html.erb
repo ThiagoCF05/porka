@@ -3,7 +3,7 @@
         <h1 itemprop="name">
             <a itemprop="url" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue ante, nec sagittis lectus. Fusce non est arcu."
                 href=""
-                class="deal-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue ante, nec sagittis lectus. Fusce non est arcu. </a></h1>
+                class="deal-title"><%= @destaque.oferta.nome %></a></h1>
         <!-- SHARE -->
         <div class="social">
             <ul>
@@ -41,7 +41,7 @@
                                 <p id="fullPrice" class="fromPrice">
                                 a partir de</p>
                                 <div itemprop="price" id="discountPrice">
-                                    R$<span>888,00</span></div>
+                                    R$<span><%= @destaque.oferta.valor_convite %></span></div>
                                 <div id="actionDeal" class="">
                                     <a title="Clique para comprar agora" class="btn primary buy buySplitted" id="compre">
                                         <span>Comprar</span></a>
@@ -49,24 +49,24 @@
                                 <span class="dobraImg"></span>
                                 </form>
                 <div class="infoSidebarDeal first-child">
-                    <strong id="totalsold">99</strong> <span>Cupons vendidos</span>
+                    <strong id="totalsold"><%= Pagamento.where(:oferta_id => @oferta).count %></strong> <span>Cupons vendidos</span>
                 </div>
                 <div class="infoSidebarDeal">
                     <strong id="timeremh" class="high">24</strong>h <strong id="timeremm" class="high">59</strong>m
                     <strong id="timerems" class="high">59</strong>s <span>Tempo restante</span>
                 </div>
             </div>
-            
+
         </div>
         <!--mainDeal-->
         <div class="deal-description row collapsed">
             <div class="grid6" itemprop="description">
                 <strong class="desc-title">Detalhes</strong>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue ante, nec sagittis lectus. Fusce non est arcu. Ut ut eros eu magna feugiat blandit. In egestas dignissim quam eget consequat. Maecenas in sagittis erat. Quisque tristique leo vel diam molestie molestie. Nullam eget tortor vel nisi suscipit bibendum. Sed at ligula nisi. Proin vestibulum purus ac velit mattis eget porta mi blandit. Donec nec sapien at velit commodo condimentum. Nunc faucibus turpis non tortor ullamcorper a tempus libero imperdiet. Sed eu tellus elit. Ut condimentum posuere elementum. Praesent non faucibus felis.
+                <%= @destaque.oferta.cotacao.descricao %>
             </div>
             <div class="grid6" itemprop="description">
-                <strong class="desc-title">Cooperativa A</strong>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue ante, nec sagittis lectus. Fusce non est arcu. Ut ut eros eu magna feugiat blandit. In egestas dignissim quam eget consequat. Maecenas in sagittis erat. Quisque tristique leo vel diam molestie molestie. Nullam eget tortor vel nisi suscipit bibendum. Sed at ligula nisi. Proin vestibulum purus ac velit mattis eget porta mi blandit. Donec nec sapien at velit commodo condimentum. Nunc faucibus turpis non tortor ullamcorper a tempus libero imperdiet. Sed eu tellus elit. Ut condimentum posuere elementum. Praesent non faucibus felis.
+                <strong class="desc-title"><%= @destaque.oferta.cotacao.cooperativa.nome %></strong>
+                <%= @destaque.oferta.cotacao.cooperativa.descricao %>
             </div>
             <div class="grid6 deal-regulations">
                 <strong class="desc-title">Regulamento</strong>
@@ -76,7 +76,7 @@
                     <li>Aliquam vestibulum ipsum vitae ipsum molestie sit amet volutpat eros sodales.</li>
                     <li>Vivamus eu ligula orci, ac imperdiet massa.</li>
                     <li>Curabitur faucibus lacus eleifend ante feugiat vel gravida nulla egestas.</li>
-                    <li>Suspendisse vel metus libero, a lobortis massa.</li>                            
+                    <li>Suspendisse vel metus libero, a lobortis massa.</li>
                     </div>
         </div>
     </div>

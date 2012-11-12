@@ -16,10 +16,10 @@
     <td><%= cotacao.id %></td>
     <td><%= cotacao.cooperativa.nome %></td>
     <td><%= cotacao.data_inicio %></td>
-    <td><%= cotacao.data_fim %></td>    
+    <td><%= cotacao.data_fim %></td>
     <td><%= link_to 'Show', admin_cotacao_path(cotacao) %></td>
      <td><%= link_to 'Edit', edit_admin_cotacao_path(cotacao) %></td>
-    <td><%= link_to 'Destroy', [:admin,cotacao] , :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= button_to 'Destroy', [:admin,cotacao] , :confirm => 'Are you sure?', :method => :delete %></td>
     <td><%= link_to 'Aprovar', new_admin_aprovacao_cotacao_path(cotacao) %></td>
   </tr>
 <% end %>

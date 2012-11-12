@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107134555) do
+ActiveRecord::Schema.define(:version => 20121111220645) do
 
   create_table "categorias", :force => true do |t|
     t.string   "nome",       :limit => 80, :null => false
@@ -27,12 +27,13 @@ ActiveRecord::Schema.define(:version => 20121107134555) do
     t.datetime "updated_at"
   end
 
-  create_table "clientes", :force => true do |t|
+  create_table "clientes", :id => false, :force => true do |t|
+    t.integer  "id",              :limit => 8,  :null => false
     t.string   "nome",            :limit => 50
     t.string   "senha",                         :null => false
     t.string   "username"
     t.string   "email",           :limit => 80, :null => false
-    t.datetime "date_nascimento"
+    t.datetime "data_nascimento"
     t.string   "tipo_pessoa",     :limit => 1
     t.integer  "documento",       :limit => 8
     t.string   "sexo",            :limit => 1
@@ -41,8 +42,10 @@ ActiveRecord::Schema.define(:version => 20121107134555) do
     t.datetime "updated_at"
   end
 
-  create_table "cotacaos", :force => true do |t|
+  create_table "cotacaos", :id => false, :force => true do |t|
+    t.integer  "id",             :limit => 8, :null => false
     t.integer  "cooperativa_id", :limit => 8, :null => false
+    t.integer  "produto_id",     :limit => 8, :null => false
     t.datetime "data_inicio"
     t.datetime "data_fim"
     t.float    "valor",                       :null => false
@@ -53,7 +56,8 @@ ActiveRecord::Schema.define(:version => 20121107134555) do
     t.datetime "updated_at"
   end
 
-  create_table "destaques", :force => true do |t|
+  create_table "destaques", :id => false, :force => true do |t|
+    t.integer  "id",         :limit => 8, :null => false
     t.integer  "oferta_id",  :limit => 8, :null => false
     t.integer  "status_id",               :null => false
     t.datetime "created_at"
@@ -80,37 +84,45 @@ ActiveRecord::Schema.define(:version => 20121107134555) do
   end
 
   create_table "imagens", :id => false, :force => true do |t|
-    t.integer  "id",            :limit => 8, :null => false
-    t.integer  "imageble_id",   :limit => 8, :null => false
+    t.integer  "id",                  :limit => 8, :null => false
+    t.integer  "imageble_id",         :limit => 8, :null => false
     t.string   "imageble_type"
     t.string   "alias"
     t.string   "nome"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "imagem_file_name"
+    t.string   "imagem_content_type"
+    t.integer  "imagem_file_size"
+    t.datetime "imagem_updated_at"
   end
 
-  create_table "log_acessos", :force => true do |t|
+  create_table "log_acessos", :id => false, :force => true do |t|
+    t.integer  "id",         :limit => 8, :null => false
     t.integer  "usuario_id", :limit => 8, :null => false
     t.integer  "cliente_id", :limit => 8, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "ofertas", :force => true do |t|
-    t.integer  "cotacao_id",                :limit => 8, :null => false
-    t.integer  "administrador_id",          :limit => 8, :null => false
+  create_table "ofertas", :id => false, :force => true do |t|
+    t.integer  "id",                        :limit => 8,  :null => false
+    t.integer  "cotacao_id",                :limit => 8,  :null => false
+    t.integer  "administrador_id",          :limit => 8,  :null => false
+    t.string   "nome",                      :limit => 60
     t.datetime "data_inicio"
     t.datetime "data_fim"
-    t.integer  "total_vendas",                           :null => false
-    t.float    "valor_convite",                          :null => false
+    t.integer  "total_vendas",                            :null => false
+    t.float    "valor_convite",                           :null => false
     t.float    "valor_convite_promocional"
-    t.float    "porcentagem_instituicao",                :null => false
-    t.integer  "status_id",                              :null => false
+    t.float    "porcentagem_instituicao",                 :null => false
+    t.integer  "status_id",                               :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "pagamentos", :force => true do |t|
+  create_table "pagamentos", :id => false, :force => true do |t|
+    t.integer  "id",                :limit => 8, :null => false
     t.integer  "cliente_id",        :limit => 8, :null => false
     t.integer  "oferta_id",         :limit => 8, :null => false
     t.integer  "log_acesso_id",     :limit => 8, :null => false
@@ -123,7 +135,8 @@ ActiveRecord::Schema.define(:version => 20121107134555) do
     t.datetime "updated_at"
   end
 
-  create_table "produtos", :force => true do |t|
+  create_table "produtos", :id => false, :force => true do |t|
+    t.integer  "id",              :limit => 8,  :null => false
     t.integer  "cooperativa_id",  :limit => 8,  :null => false
     t.integer  "subcategoria_id",               :null => false
     t.string   "nome",            :limit => 80, :null => false
@@ -159,7 +172,8 @@ ActiveRecord::Schema.define(:version => 20121107134555) do
     t.datetime "updated_at"
   end
 
-  create_table "usuarios", :force => true do |t|
+  create_table "usuarios", :id => false, :force => true do |t|
+    t.integer  "id",              :limit => 8,  :null => false
     t.string   "nome",            :limit => 50
     t.string   "senha"
     t.string   "username"

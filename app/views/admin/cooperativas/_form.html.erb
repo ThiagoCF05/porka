@@ -28,23 +28,23 @@
     <%= f.email_field :email %>
   </div>
   <div class="field">
-    <%= f.label :date_nascimento %><br />
-    <%= date_select 'cooperativa', 'date_nascimento', :start_year => 1920, :order => [:day, :month, :year] %>
+    <%= f.label :data_nascimento %><br />
+    <%= date_select 'cooperativa', 'data_nascimento', :start_year => 1920, :order => [:day, :month, :year] %>
   </div>
   <div class="field">
     <%= f.label :documento %><br />
     <%= f.text_field :documento %>
-  </div>  
+  </div>
   <div class="field">
     <%= f.label :descricao %><br />
     <%= f.text_area :descricao %>
-  </div> 
+  </div>
   <div class="field">
     <label>Status</label><br />
     <% status_array = Status.all.map { |status| [status.descricao, status.id] } %>
     <%= f.select :status_id, options_for_select(status_array)  %>
-  </div>  
-  
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -15,7 +15,7 @@
     <td><%= cliente.type %></td>
     <td><%= link_to 'Show', admin_cliente_path(cliente) %></td>
      <td><%= link_to 'Edit', edit_admin_cliente_path(cliente) %></td>
-    <td><%= link_to 'Destroy', [:admin, cliente], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= button_to 'Destroy', [:admin, cliente], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

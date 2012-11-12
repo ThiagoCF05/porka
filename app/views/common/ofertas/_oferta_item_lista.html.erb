@@ -1,12 +1,14 @@
-<div class="box other_deals">
+<% @ofertas.each do |oferta| %>
+	<div class="box other_deals">
     <a href="" title="Oferta">
         <img src="/assets/img_offer.jpg" width="260" height="193" class="lazy">
     </a>
          <div class="discount">
          <span class="percentDiscount"></span></div>
-         <span class="district">Cooperativa A</span>
+         <span class="district"><%= oferta.nome %></span>
          <a href="" class="title_old" onclick="" title="O produto X da cooperativa A est· com desconto!">Produto Bolinha</a>
                     <p>
-            <span id="oldprice_243488" class="price_from old_priceNovo" style="text-decoration: none">R$ 999,00</span> <span class="new_price"><span>R$</span>888,88</span> <a href="" title="Ver" class="btn secondary">>></a>
+            <span id="oldprice_243488" class="price_from old_priceNovo" style="text-decoration: none">R$ <%= oferta.valor_convite %></span> <span class="new_price"><span>R$</span><%= oferta.valor_convite_promocional %></span> <a href="" title="Ver" class="btn secondary">>></a>
                     </p>
     </div>
+<% end %>

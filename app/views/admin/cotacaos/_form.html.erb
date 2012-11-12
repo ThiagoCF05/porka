@@ -15,34 +15,40 @@
     <%= f.label :data_inicio %><br />
     <%= date_select 'cotacao', 'data_inicio', :order => [:day, :month, :year] %>
   </div>
-  
+
   <div class="field">
     <%= f.label :data_fim %><br />
     <%= date_select 'cotacao', 'data_fim', :order => [:day, :month, :year] %>
   </div>
-  
+
   <div class="field">
    <label>Cooperativa</label><br />
-    <% cooperativas_array = Cooperativa.all.map { |cooperativa| [cooperativa.nome, cooperativa.id] } %>
-    <%= f.select :cooperativa_id, options_for_select(cooperativas_array)  %>
+   <% cooperativas_array = Cooperativa.where(:status_id => Status.find_by_descricao('Ativo')).map { |cooperativa| [cooperativa.nome, cooperativa.id] } %>
+   <%= f.select :cooperativa_id, options_for_select(cooperativas_array)  %>
   </div>
-  
+
+  <div class="field">
+   <label>Produto</label><br />
+   <% produtos_array = Produto.where(:status_id => Status.find_by_descricao('Ativo')).map { |produto| [produto.nome, produto.id] } %>
+   <%= f.select :produto_id, options_for_select(produtos_array)  %>
+  </div>
+
   <div class="field">
     <%= f.label :valor %><br />
     <%= f.text_field :valor %>
   </div>
-  
+
   <div class="field">
     <label>Status</label><br />
     <% status_array = Status.all.map { |status| [status.descricao, status.id] } %>
     <%= f.select :status_id, options_for_select(status_array)  %>
-  </div> 
-  
+  </div>
+
   <div class="field">
     <%= f.label :descricao %><br />
     <%= f.text_area :descricao, :cols => 40, :rows => 20 %>
   </div>
-  
+
   <div class="actions">
     <%= f.hidden_field :tipo %>
     <%= f.submit %>

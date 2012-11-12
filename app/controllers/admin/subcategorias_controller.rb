@@ -46,8 +46,8 @@ class Admin::SubcategoriasController < Admin::ApplicationController
     @subcategoria = Subcategoria.new(params[:subcategoria])
 
     respond_to do |format|
-      if @categoria.save
-        format.html { redirect_to [:admin, @subcategoria], :notice => 'Exemplo was successfully created.' }
+      if @subcategoria.save
+        format.html { redirect_to [:admin, @subcategoria], :notice => 'Subcategorias was successfully created.' }
         format.json { render :json => @subcategoria, :status => :created, :location => @subcategoria }
       else
         format.html { render :action => "new" }

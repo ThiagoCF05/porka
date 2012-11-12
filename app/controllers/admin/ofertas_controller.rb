@@ -1,6 +1,6 @@
-class Admin::OfertasController < ApplicationController
+class Admin::OfertasController < Admin::ApplicationController
   before_filter :administrador_logado
-  
+
   # GET admin/ofertas
   # GET admin/ofertas.json
   def index
@@ -26,7 +26,7 @@ class Admin::OfertasController < ApplicationController
   # GET admin/ofertas/new
   # GET admin/ofertas/new.json
   def new
-    @oferta = Oferta.new    
+    @oferta = Oferta.new
     @oferta.cotacao = @cotacao
     @oferta.administrador = Administrador.first
     @oferta.data_inicio = @oferta.cotacao.data_inicio
@@ -38,20 +38,20 @@ class Admin::OfertasController < ApplicationController
       format.json { render :json => @oferta }
     end
   end
-  
+
   # GET admin/ofertas/aprovar
   # GET admin/ofertas/aprovar.json
   def aprovar
     @oferta = Oferta.new
     @oferta.cotacao = Cotacao.find(params[:id])
     @oferta.cotacao.update_attributes(:status => Status.find_by_descricao('Aprovado'))
-    
+
     @oferta.administrador = Administrador.first
     @oferta.data_inicio = @oferta.cotacao.data_inicio
     @oferta.data_fim = @oferta.cotacao.data_fim
     @oferta.valor_convite = @oferta.cotacao.valor
     @oferta.status = Status.find 2
-    
+
     respond_to do |format|
       format.html { render :action => "new" }
       format.json { render :json => @oferta }
