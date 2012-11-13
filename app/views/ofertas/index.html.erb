@@ -1,25 +1,16 @@
-<h1>OFERTAS</h1>
+<div class="content ">
+    <div class="row">                
+        <div class="grid12" style="margin-top: 5px;">
+            <div class="other_deals_list">
+                <h2 class="title-offer" style="font-size:26px">Ofertas</h2>                
+                <%= render :partial => "/common/ofertas/oferta_item_lista", :locals => { :ofertas => @ofertas } %>
 
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Cooperativa</th>
-    <th>Data Início</th>
-    <th>Data Fim</th>
-    <th>Status</th>
-    <th></th>
-  </tr>
+            </div>
+        </div>  
+        
+        </script>
 
-<% @ofertas.each do |oferta| %>
-  <tr>
-    <td><%= oferta.id %></td>
-    <td><%= oferta.cotacao.cooperativa.nome %></td>
-    <td><%= oferta.data_inicio %></td>
-    <td><%= oferta.data_fim %></td> 
-    <td><%= oferta.status.descricao %></td>   
-    <td><%= link_to 'Show', oferta_path(oferta) %></td>
-  </tr>
-<% end %>
-</table>
-<br />
-<%= will_paginate @ofertas %>
+    </div>
+    <!-- /row -->
+</div>
+<!-- / content -->

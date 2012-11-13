@@ -3,7 +3,7 @@
         <h1 itemprop="name">
             <a itemprop="url" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue ante, nec sagittis lectus. Fusce non est arcu."
                 href=""
-                class="deal-title"><%= @oferta.nome %></a></h1>
+                class="deal-title"><%= @destaque.oferta.nome %></a></h1>
         <!-- SHARE -->
         <div class="social">
             <ul>
@@ -39,9 +39,9 @@
                         <input type="hidden" name="viewName" value="DealPage">
                             <input type="hidden" name="vid" value="74">
                                 <p id="fullPrice" class="fromPrice">
-                                Por apenas </p>
+                                a partir de</p>
                                 <div itemprop="price" id="discountPrice">
-                                    R$<span><%= format("%.2f", @oferta.valor_convite) %></span></div>
+                                    R$<span><%= @destaque.oferta.valor_convite %></span></div>
                                 <div id="actionDeal" class="">
                                     <a title="Clique para comprar agora" class="btn primary buy buySplitted" id="compre">
                                         <span>Comprar</span></a>
@@ -62,11 +62,11 @@
         <div class="deal-description row collapsed">
             <div class="grid6" itemprop="description">
                 <strong class="desc-title">Detalhes</strong>
-                <%= @oferta.cotacao.descricao %>
+                <%= @destaque.oferta.cotacao.descricao %>
             </div>
             <div class="grid6" itemprop="description">
-                <strong class="desc-title"><%= @oferta.cotacao.cooperativa.nome %></strong>
-                <%= @oferta.cotacao.cooperativa.descricao %>
+                <strong class="desc-title"><%= @destaque.oferta.cotacao.cooperativa.nome %></strong>
+                <%= @destaque.oferta.cotacao.cooperativa.descricao %>
             </div>
             <div class="grid6 deal-regulations">
                 <strong class="desc-title">Regulamento</strong>

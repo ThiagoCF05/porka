@@ -1,42 +1,11 @@
-<p>
-  <b>ID:</b>
-  <%= @oferta.id %>
-</p>
+<div class="content ">
+    <div class="row">
 
-<p>
-  <b>Cooperativa:</b>
-  <%= @oferta.cotacao.cooperativa.nome %>
-</p>
+        <%= render "/common/ofertas/oferta_principal", :locals => { :oferta => @oferta } %>
+ 
+        </script>
 
-<p>
-  <b>Data Início:</b>
-  <%= @oferta.data_inicio %>
-</p>
-
-<p>
-  <b>Data Fim:</b>
-  <%= @oferta.data_fim %>
-</p>
-
-<p>
-  <b>Valor do Convite:</b>
-  <%= @oferta.valor_convite %>
-</p>
-
-<p>
-  <b>Porcentagem Instituição:</b>
-  <%= @oferta.porcentagem_instituicao %>
-</p>
-
-<p>
-  <b>Descrição:</b>
-  <%= @oferta.cotacao.descricao %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @oferta.status.descricao %>
-</p>
-<br />
-
-<%= link_to 'Voltar', ofertas_path %>
+    </div>
+    <!-- /row -->
+</div>
+<!-- / content -->

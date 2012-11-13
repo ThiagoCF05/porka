@@ -1,0 +1,14 @@
+<% @cooperativas.each do |cooperativa| %>
+	<div class="box other_deals" style="height:290px">
+    <a href="" title="Oferta">
+        <img src="/assets/img_offer.jpg" width="260" height="193" class="lazy">
+    </a>
+         
+         <!--span class="district"></span>-->
+         <a href="" class="title_old" onclick="" title="Teste!"><%= cooperativa.nome %></a>
+        <%= cooperativa.descricao[0..200] + '...' %>            
+        <p style="position:top">
+                    <a href="" title="Ver" class="btn secondary" style="bottom:-15px">>></a>
+                    </p>
+    </div>
+<% end %>
