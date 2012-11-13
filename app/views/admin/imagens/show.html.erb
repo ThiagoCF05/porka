@@ -1,0 +1,8 @@
+<h1>IMAGEM</h1>
+
+<% if @imagem.imagem.exists? then %>
+	<p>Small:<%= image_tag @imagem.imagem.url(:small) %></p>
+	<p>Medium:<%= image_tag @imagem.imagem.url(:medium) %></p>
+<% else %>
+	<p> There are no photo's attached, upload one. </p>
+<% end %>

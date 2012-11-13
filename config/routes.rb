@@ -1,48 +1,49 @@
 Porka::Application.routes.draw do
-  resources :administradores 
+  resources :administradores
   resources :usuarios
   resources :cooperativas
   resources :clientes
-  resources :destaques   
+  resources :destaques
   resources :telefones
   resources :enderecos
   resources :main
   resources :cotacaos
   resources :ofertas
-  
+
   root :to => 'Main#index'
-  
+
   match 'usuarios/:id/novo-telefone' => 'Telefones#newUsuario', :as => 'new_telefone_usuario'
   match 'usuarios/:id/novo-endereco' => 'Enderecos#newUsuario', :as => 'new_endereco_usuario'
-  
+
   match 'cooperativas/seleciona-categoria' => 'Cooperativas#seleciona_categoria'
   match 'cooperativas/seleciona-subcategoria' => 'Cooperativas#index'
-  
+
   match 'admin/usuarios/:id/novo-telefone' => 'Telefones#newUsuario', :as => 'new_admin_telefone_usuario'
   match 'admin/usuarios/:id/novo-endereco' => 'Enderecos#newUsuario', :as => 'new_admin_endereco_usuario'
-  
+
   match 'admin/ofertas/aprovar/:id' => 'Admin::Ofertas#aprovar', :as => 'new_admin_aprovacao_cotacao'
-  
+
   match 'admin/home' => 'Admin::Logins#create'
-  
+
   match 'admin/oferta/:id/tornar-destaque' => 'Admin::Destaques#create', :as => 'create_admin_destaque'
-  
-  namespace :admin do      
+
+  namespace :admin do
       resources :administradores
       resources :cooperativas
       resources :cotacaos
-      resources :clientes 
+      resources :clientes
       resources :destaques
-      resources :telefones    
-      resources :ofertas 
+      resources :imagens
+      resources :telefones
+      resources :ofertas
       resources :categorias
       resources :subcategorias
       resources :produtos
       resources :usuarios
-      
+
       root :to => 'Logins#index'
    end
-  
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
