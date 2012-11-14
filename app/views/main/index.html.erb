@@ -3,7 +3,6 @@
 
         <%= render "/common/ofertas/oferta_principal", :locals => { :oferta => @oferta } %>
 
-
         <div class="grid12" style="margin-top: 5px;">
             <div class="other_deals_list">
                 <h2 class="title-offer">Mais Recentes</h2>
@@ -14,7 +13,9 @@
         </div>
         <div class="grid12" style="margin-top: 5px;">
             <p>
+
             <%= link_to("Ver Mais Ofertas", ofertas_path, :id => "MaisOfertas", :class => "link-ver-mais", :title => "Veja Todas as Ofertas") %>
+
             </p>
         </div>
 
@@ -28,7 +29,9 @@
         </div>
         <div class="grid12" style="margin-top: 5px;">
             <p>
+
             <%= link_to("Ver Mais Cooperativas", cooperativas_path, :id => "MaisCooperativas", :class => "link-ver-mais", :title => "Veja Todas as Cooperativas") %>
+
             </p>
         </div>
 

@@ -1,0 +1,76 @@
+<div class="content ">
+    <div class="row">
+
+        <div class="grid8" id="main-deal">
+    <div itemscope="" itemtype="http://schema.org/Offer" class="box main_box">
+        <h1 itemprop="name">
+            <a itemprop="url" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue ante, nec sagittis lectus. Fusce non est arcu."
+                href=""
+                class="deal-title">Divulgue sua Cooperativa</a></h1>
+        <!-- SHARE -->
+                
+        <!--mainDeal-->
+        <div class="deal-description row" style="margin:20px">
+            <%= form_for [, @cotacao] do |f| %>
+            <% if @cotacao.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@cotacao.errors.count, "error") %> Erro ao Salvar</h2>
+                
+                <ul>
+                    <% @cotacao.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+            <% end %>
+            
+            <div class="field">
+                <label>Produto</label><br />
+                <% produtos_array = Produto.where(:status_id => Status.find_by_descricao('Ativo')).map { |produto| [produto.nome, produto.id] } %>
+                <%= f.select :produto_id, options_for_select(produtos_array), :style => "width:80%"   %>
+            </div>
+            
+            <div class="field">
+                <%= f.label :valor %><br />
+                <%= f.text_field :valor, :style => "width:80%"  %>
+            </div>
+            
+            <div class="field">
+                <%= f.label :descricao %><br />
+                <%= f.text_area :descricao, :cols => 40, :rows => 20, :style => "width:80%"  %>
+            </div>
+            
+            
+            <div class="actions">
+                <%= f.hidden_field :tipo %>
+                <a href="" onclick="document.form.submit();" title="Enviar" class="btn secondary" style="bottom:-15px">Enviar Pedido de Cotação</a>
+                <!--%= f.submit %-->
+            </div>
+            
+            <% end %>
+
+
+        </div>
+        
+    </div>
+</div>
+
+
+
+                
+        
+        </script>
+
+    </div>
+    <!-- /row -->
+</div>
+<!-- / content -->
+
+
+
+
+
+
+
+
+
