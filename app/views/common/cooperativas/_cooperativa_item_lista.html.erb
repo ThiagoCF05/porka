@@ -3,16 +3,15 @@
     <a href="" title="Oferta">
         <img src="/assets/img_offer.jpg" width="260" height="193" class="lazy">
     </a>
-         
+
          <!--span class="district"></span>-->
          <a href="" class="title_old" onclick="" title="Teste!"><%= cooperativa.nome %></a>
-        <%= cooperativa.descricao[0..200] + '...' %>            
+        <%= cooperativa.descricao[0..200] + '...' %>
         <p style="position:top">
-            <!--%= link_to(">>", { :controller => "cooperativas", :action => "show", :id => @cooperativa }, :class => "btn secondary", :title => "Ver") %-->
-                    <a href="" title="Ver" class="btn secondary" style="bottom:-15px">>></a>
+            <%= link_to(">>", cooperativa_path(cooperativa), :class => "btn secondary", :title => "Ver") %>
         </p>
-                    
-                    
-                            
+
+
+
     </div>
 <% end %>

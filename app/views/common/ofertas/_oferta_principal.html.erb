@@ -71,14 +71,8 @@ h<div class="grid8" id="main-deal">
             </div>
             <div class="grid6 deal-regulations">
                 <strong class="desc-title">Regulamento</strong>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                    <li>Quisque sit amet mi bibendum mi interdum tempus.</li>
-                    <li>Aliquam vestibulum ipsum vitae ipsum molestie sit amet volutpat eros sodales.</li>
-                    <li>Vivamus eu ligula orci, ac imperdiet massa.</li>
-                    <li>Curabitur faucibus lacus eleifend ante feugiat vel gravida nulla egestas.</li>
-                    <li>Suspendisse vel metus libero, a lobortis massa.</li>
-                    </div>
+                <%= @oferta.regulamento.html_safe %>
+            </div>
         </div>
     </div>
 </div>

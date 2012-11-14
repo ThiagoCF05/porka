@@ -2,7 +2,17 @@ class OfertasController < ApplicationController
   # GET ofertas
   # GET ofertas.json
   def index
-    @ofertas = Oferta.where(:status_id => Status.find_by_descricao('Ativo'))
+    @ofertas = []
+    if params[:cooperativa_id].nil?
+      @ofertas = Oferta.where(:status_id => Status.find_by_descricao('Ativo'))
+    else
+      Cotacao.where(:cooperativa_id => Cooperativa.find(params[:cooperativa_id]), :status_id => Status.find_by_descricao('Aprovado')).each do |cotacao|
+        @oferta = Oferta.where(:cotacao_id => cotacao, :status_id => Status.find_by_descricao('Ativo'))[0]
+        @ofertas.push(@oferta)
+      end
+      @ofertas = @ofertas.paginate(:page => params[:page], :per_page => 24)
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb

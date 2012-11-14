@@ -16,8 +16,8 @@ Porka::Application.routes.draw do
   match 'usuarios/:id/novo-telefone' => 'Telefones#newUsuario', :as => 'new_telefone_usuario'
   match 'usuarios/:id/novo-endereco' => 'Enderecos#newUsuario', :as => 'new_endereco_usuario'
 
-  match 'cooperativas/seleciona-categoria' => 'Cooperativas#seleciona_categoria'
-  match 'cooperativas/seleciona-subcategoria' => 'Cooperativas#index'
+  match 'cooperativas/:cooperativa_id/produtos' => 'Produtos#index', :as => 'cooperativa_produtos'
+  match 'cooperativas/:cooperativa_id/ofertas' => 'Ofertas#index', :as => 'cooperativa_ofertas'
 
   match 'admin/usuarios/:id/novo-telefone' => 'Telefones#newUsuario', :as => 'new_admin_telefone_usuario'
   match 'admin/usuarios/:id/novo-endereco' => 'Enderecos#newUsuario', :as => 'new_admin_endereco_usuario'

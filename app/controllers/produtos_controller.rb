@@ -8,9 +8,6 @@ class ProdutosController < ApplicationController
     if params[:cooperativa_id].nil?
       @produtos = Produto.where(:status_id => Status.find_by_descricao('Ativo')).paginate(:page => params[:page], :per_page => 24).order("nome")
     else
-      Produto.where(:cooperativa_id => Cooperativa.find(params[:cooperativa_id]), :status_id => Status.find_by_descricao('Ativo')).each do |produto|
-        @produto.push(produto.cooperativa)
-      end
       @produtos_aux = Produto.where(:cooperativa_id => Cooperativa.find(params[:cooperativa_id]), :status_id => Status.find_by_descricao('Ativo'))
       @produtos = @produtos_aux.paginate(:page => params[:page], :per_page => 24)
     end

@@ -30,7 +30,7 @@
 
             <div class="grid12" style="margin-top: 5px;">
                 <p>
-                <%= link_to("Ver Ofertas desta Cooperativa", { :controller => "cooperativas" }, :id => "MaisCooperativas", :class => "link-ver-mais", :title => "Veja Todas as Cooperativas") %>
+                <%= link_to("Ver Ofertas desta Cooperativa", cooperativa_ofertas_path(@cooperativa), :id => "MaisCooperativas", :class => "link-ver-mais", :title => "Veja Todas as Cooperativas") %>
                 </p>
             </div>
         </div>
