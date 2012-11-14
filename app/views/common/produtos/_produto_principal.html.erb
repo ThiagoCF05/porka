@@ -23,19 +23,29 @@
             </ul>
         </div>
         <!-- /SHARE -->
-                
+
         <!--mainDeal-->
+        <div id="mainDeal">
+            <!--sidebarDeal-->
+            <div id="mainImage">
+                <a title="PromoÁ„o da Cooperativa!"
+                    class="" style="display: block;">
+                    <% if @produto.imagens.count != 0 %>
+                      <%= image_tag @produto.imagens[0].image.url(:medium), :class => "oferta" %>
+                    <% end %>
+                        </a>
+            </div>
         <div class="deal-description row">
             <%= @produto.descricao.html_safe %>
-            
+
             <!--div class="grid12" style="margin-top: 5px;">
                 <p>
                 <%= link_to("Ver Ofertas desta Cooperativa", { :controller => "cooperativas" }, :id => "MaisCooperativas", :class => "link-ver-mais", :title => "Veja Todas as Cooperativas") %>
                 </p>
             </div-->
         </div>
-        
-        
-        
+
+
+
     </div>
 </div>

@@ -25,6 +25,17 @@
         <!-- /SHARE -->
 
         <!--mainDeal-->
+        <div id="mainDeal">
+            <!--sidebarDeal-->
+            <div id="mainImage">
+                <a title="PromoÁ„o da Cooperativa!"
+                    class="" style="display: block;">
+                    <% if @cooperativa.imagens.count != 0 %>
+                      <%= image_tag @cooperativa.imagens[0].image.url(:medium), :class => "oferta" %>
+                    <% end %>
+                        </a>
+            </div>
+
         <div class="deal-description row">
             <%= @cooperativa.descricao.html_safe %>
 
