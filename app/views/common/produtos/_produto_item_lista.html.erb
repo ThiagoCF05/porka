@@ -1,7 +1,9 @@
 <% @produtos.each do |produto| %>
 	<div class="box other_deals" style="height:290px">
     <a href="" title="Oferta">
-        <img src="/assets/img_offer.jpg" width="260" height="193" class="lazy">
+        <% if produto.imagens.count != 0  %>
+          <%= image_tag produto.imagens[0].image.url(:thumb), :class => "lazy" %>
+        <% end %>
     </a>
 
          <!--span class="district"></span>-->

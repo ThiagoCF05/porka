@@ -11,6 +11,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @ofertas.each do |oferta| %>
@@ -23,6 +24,7 @@
     <td><%= link_to 'Tornar Destaque', create_admin_destaque_path(oferta) %></td>
     <td><%= link_to 'Show', admin_oferta_path(oferta) %></td>
      <td><%= link_to 'Edit', edit_admin_oferta_path(oferta) %></td>
+     <td><%= link_to 'Adiciona Imagem', new_admin_oferta_imagem(oferta) %></td>
     <td><%= button_to 'Destroy', [:admin,oferta] , :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

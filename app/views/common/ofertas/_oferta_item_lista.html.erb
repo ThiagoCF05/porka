@@ -1,7 +1,9 @@
 <% @ofertas.each do |oferta| %>
 	<div class="box other_deals">
     <a href="" title="Oferta">
-        <img src="/assets/img_offer.jpg" width="260" height="193" class="lazy">
+        <% if oferta.imagens.count != 0  %>
+          <%= image_tag oferta.imagens[0].image.url(:thumb), :class => "lazy" %>
+        <% end %>
     </a>
 
          <a href="" class="title_old" onclick="" title="<%= oferta.nome %>"><%= oferta.nome %></a>
