@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20121111220645) do
     t.float    "valor_convite_promocional"
     t.float    "porcentagem_instituicao",                 :null => false
     t.integer  "status_id",                               :null => false
+    t.text     "regulamento"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

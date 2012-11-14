@@ -12,6 +12,7 @@ class CreateOfertas < ActiveRecord::Migration
       t.float :valor_convite_promocional
       t.float :porcentagem_instituicao, :null => false
       t.integer :status_id, :null => false
+      t.text :regulamento
       t.timestamps
     end
   end

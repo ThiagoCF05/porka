@@ -69,6 +69,11 @@
     <%= f.select :status_id, options_for_select(status_array)  %>
   </div>
 
+	<div class="field">
+    <%= f.label :regulamento %><br />
+    <%= f.text_area :regulamento %>
+  </div>
+
   <div class="field">
     <b>Descrição</b><br />
     <%= @oferta.cotacao.descricao %>
