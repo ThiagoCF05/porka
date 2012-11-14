@@ -18,7 +18,8 @@
 
   <div class="field">
     <label>Subcategoria</label><br />
-    <%= f.select :subcategoria_id, Subcategoria.all.collect {|subcategoria| [subcategoria.nome, subcategoria.id]}  %>
+    <%  subcategorias_array = Subcategoria.where(:status_id => Status.find_by_descricao('Ativo')).map {|subcategoria| [subcategoria.nome, subcategoria.id]} %>
+    <%= f.select :subcategoria_id, subcategorias_array  %>
   </div>
 
   <div class="field">
