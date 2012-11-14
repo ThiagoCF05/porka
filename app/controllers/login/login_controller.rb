@@ -21,6 +21,7 @@ class Login::LoginController < Admin::ApplicationController
   end
 
   def destroy
-
+    session[:current_administrator_id] = nil
+    render 'index.html.erb'
   end
 end

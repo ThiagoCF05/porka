@@ -8,7 +8,8 @@
         <%= oferta.cotacao.descricao.size > 125 ? oferta.cotacao.descricao[0..120] + '...' : oferta.cotacao.descricao %>           
         <p>
             
-        <span id="oldprice_243488" class="price_from old_priceNovo" style="text-decoration: none">De: R$ <%= format("%.2f", oferta.valor_convite) %></span> <span class="new_price"><span>Por: R$ </span><%= format("%.2f", oferta.valor_convite_promocional)%></span> <a href="" title="Ver" class="btn secondary">>></a>
-                    </p>
+        <span id="oldprice_243488" class="price_from old_priceNovo" style="text-decoration: none">De: R$ <%= format("%.2f", oferta.valor_convite) %></span> <span class="new_price"><span>Por: R$ </span><%= format("%.2f", oferta.valor_convite_promocional)%></span> 
+        <%= link_to(">>", { :controller => "ofertas", :action => "show", :id => @oferta }, :class => "btn secondary", :title => "Ver") %>
+        </p>
     </div>
 <% end %>

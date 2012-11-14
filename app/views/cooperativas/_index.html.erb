@@ -1,0 +1,45 @@
+<h1>COOPERATIVAS</h1>
+
+<%= form_tag('/cooperativas/seleciona-categoria') do %>
+  <div>
+    <% categorias_array = Categoria.all.map { |categoria| [categoria.nome, categoria.id] } %>
+    <%= select_tag("categoria_id", options_for_select(categorias_array)) %>
+    <%= submit_tag 'Seleciona' %>
+  </div>
+<% end %>
+
+<br />
+
+<%= form_tag('/cooperativas/seleciona-subcategoria') do %>
+  <div>
+    <% if @subcategorias.nil? %>
+      <% subcategorias_array = [] %>
+    <% else %>
+      <% subcategorias_array = @subcategorias.map { |subcategoria| [subcategoria.nome, subcategoria.id] } %>
+    <% end %>
+
+    <%= select_tag("subcategoria_id", options_for_select(subcategorias_array), :include_blank => true) %>
+    <%= submit_tag 'Seleciona' %>
+  </div>
+<% end %>
+
+<br /><br />
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Data de Início</th>
+    <th></th>
+  </tr>
+
+<% @cooperativas.each do |cooperativa| %>
+  <tr>
+    <td><%= cooperativa.nome %></td>
+    <td><%= cooperativa.date_nascimento %></td>
+    <td><%= link_to 'Show', cooperativa_path(cooperativa) %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+
+<%= will_paginate @cooperativas %>

@@ -4,15 +4,17 @@ class CooperativasController < ApplicationController
   # GET cooperativas
   # GET cooperativas.json
   def index
-    @cooperativas = []
-    if params[:subcategoria_id].nil?
-      @cooperativas = Cooperativa.where(:status_id => Status.find_by_descricao('Ativo')).paginate(:page => params[:page], :per_page => 24).order("nome")
-    else
-      Produto.where(:subcategoria_id => Subcategoria.find(params[:subcategoria_id]), :status_id => Status.find_by_descricao('Ativo')).each do |produto|
-        @cooperativas.push(produto.cooperativa)
-      end
-      @cooperativas = @cooperativas.paginate(:page => params[:page], :per_page => 24)
-    end
+      @cooperativas = Cooperativa.where(:status_id => Status.find_by_descricao('Ativo'))
+      
+      #@cooperativas = []
+      #if params[:subcategoria_id].nil?
+      #@cooperativas = Cooperativa.where(:status_id => Status.find_by_descricao#('Ativo')).paginate(:page => params[:page], :per_page => 24).order("#nome")
+      #else
+      #Produto.where(:subcategoria_id => Subcategoria.find(params[:subcategoria_id]), :status_id => Status.find_by_descricao('Ativo')).each do |produto|
+      #        @cooperativas.push(produto.cooperativa)
+      #end
+      #@cooperativas = @cooperativas.paginate(:page => params[:page], :per_page => 24)
+      #end
 
     respond_to do |format|
       format.html # index.html.erb

@@ -62,11 +62,11 @@
         <div class="deal-description row collapsed">
             <div class="grid6" itemprop="description">
                 <strong class="desc-title">Detalhes</strong>
-                <%= @oferta.cotacao.descricao %>
+                <%= @oferta.cotacao.descricao.html_safe %>
             </div>
             <div class="grid6" itemprop="description">
                 <strong class="desc-title"><%= @oferta.cotacao.cooperativa.nome %></strong>
-                <%= @oferta.cotacao.cooperativa.descricao %>
+                <%= @oferta.cotacao.cooperativa.descricao.html_safe %>
             </div>
             <div class="grid6 deal-regulations">
                 <strong class="desc-title">Regulamento</strong>

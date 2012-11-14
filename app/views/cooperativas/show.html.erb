@@ -1,44 +1,11 @@
-<p>
-  <b>Nome:</b>
-  <%= @cooperativa.nome %>
-</p>
+<div class="content ">
+    <div class="row">
 
-<p>
-  <b>Username:</b>
-  <%= @cooperativa.username %>
-</p>
+        <%= render "/common/cooperativas/cooperativa_principal", :locals => { :cooperativa => @cooperativa } %>
+ 
+        </script>
 
-<p>
-  <b>Email:</b>
-  <%= @cooperativa.email %>
-</p>
-
-<p>
-  <b>Data de Nascimento:</b>
-  <%= @cooperativa.date_nascimento %>
-</p>
-
-<p>
-  <b>
-    <% if @cooperativa.tipo_pessoa == 'F' %>
-      CPF:
-    <% else %>
-      CNPJ:
-    <% end %>
-  </b>
-  <%= @cooperativa.documento %>
-</p>
-
-<p>
-  <b>Sexo:</b>
-  <%= @cooperativa.sexo %>
-</p>
-
-<p>
-  <b>Descrição:</b>
-  <%= @cooperativa.descricao %>
-</p>
-
-<br />
-
-<%= link_to 'Voltar', cooperativas_path %>
+    </div>
+    <!-- /row -->
+</div>
+<!-- / content -->

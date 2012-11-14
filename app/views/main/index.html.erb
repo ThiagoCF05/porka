@@ -1,8 +1,7 @@
 <div class="content ">
     <div class="row">
 
-        <!-- AQUI ENTRA A PARTIAL DA OFERTA PRINCIPAL -->
-        <%= render "/common/ofertas/oferta_principal", :locals => { :destaque => @destaque } %>
+        <%= render "/common/ofertas/oferta_principal", :locals => { :oferta => @oferta } %>
 
 
         <div class="grid12" style="margin-top: 5px;">
@@ -15,10 +14,25 @@
         </div>
         <div class="grid12" style="margin-top: 5px;">
             <p>
-            <a href="" id="MaisOfertas" class="link-ver-mais" title="Veja mais ofertas">Carregar mais ofertas</a></p>
-            <p>
-            <a href="" class="link-ver-mais" id="ShowAllOffer" title="Veja Todas ofertas" style="display: none;">Ofertas recentes</a></p>
+            <%= link_to("Ver Mais Ofertas", { :controller => "ofertas", :action => "index" }, :id => "MaisOfertas", :class => "link-ver-mais", :title => "Veja Todas as Ofertas") %>
+            </p>
         </div>
+        
+        <div class="grid12" style="margin-top: 5px;">
+            <div class="other_deals_list">
+                <h2 class="title-offer">Cooperativas</h2>
+
+                <%= render :partial => "/common/cooperativas/cooperativa_item_lista", :locals => { :cooperativas => @cooperativas } %>
+
+            </div>
+        </div>
+        <div class="grid12" style="margin-top: 5px;">
+            <p>
+            <%= link_to("Ver Mais Cooperativas", { :controller => "cooperativas", :action => "index" }, :id => "MaisCooperativas", :class => "link-ver-mais", :title => "Veja Todas as Cooperativas") %>
+            </p>
+        </div>
+        
+        
         </script>
 
     </div>

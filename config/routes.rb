@@ -9,6 +9,7 @@ Porka::Application.routes.draw do
   resources :main
   resources :cotacaos
   resources :ofertas
+  resources :produtos
 
   root :to => 'Main#index'
 

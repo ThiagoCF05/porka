@@ -52,9 +52,9 @@
     <div class="nav-bar">
         <div class="row">
             <div class="grid13">
-                <a href="" title="Todas as ofertas" class="">Home</a>
-				<a href="" title="Produtos" class=""> Produtos</a>
-				<a href="" title="Cooperativas" class=""> Cooperativas</a>
+                <%= link_to "Home", :controller => "main", :action => "index" %>
+                <%= link_to "Ofertas", :controller => "ofertas", :action => "index" %>
+                <%= link_to "Cooperativas", :controller => "cooperativas", :action => "index" %>
 				<a href="" title="Divulgue sua Cooperativa" class="" >Divulgue sua Cooperativa</a>
             </div>
             <div class="grid4">
