@@ -29,7 +29,9 @@ h<div class="grid8" id="main-deal">
             <div id="mainImage">
                 <a title="PromoÁ„o da Cooperativa!"
                     class="" style="display: block;">
-                    <%= image_tag @oferta.imagens[0].image.url(:medium), :class => "oferta" %>
+                    <% if @oferta.imagens.count != 0 %>
+                      <%= image_tag @oferta.imagens[0].image.url(:medium), :class => "oferta" %>
+                    <% end %>
                         </a>
             </div>
             <div id="sidebarDeal">
