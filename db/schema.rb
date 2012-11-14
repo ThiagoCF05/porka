@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114140913) do
+ActiveRecord::Schema.define(:version => 20121114160639) do
 
   create_table "categorias", :force => true do |t|
     t.string   "nome",       :limit => 80, :null => false
@@ -27,8 +27,7 @@ ActiveRecord::Schema.define(:version => 20121114140913) do
     t.datetime "updated_at"
   end
 
-  create_table "clientes", :id => false, :force => true do |t|
-    t.integer  "id",              :limit => 8,  :null => false
+  create_table "clientes", :force => true do |t|
     t.string   "nome",            :limit => 50
     t.string   "senha",                         :null => false
     t.string   "username"
@@ -42,8 +41,7 @@ ActiveRecord::Schema.define(:version => 20121114140913) do
     t.datetime "updated_at"
   end
 
-  create_table "cotacaos", :id => false, :force => true do |t|
-    t.integer  "id",             :limit => 8, :null => false
+  create_table "cotacaos", :force => true do |t|
     t.integer  "cooperativa_id", :limit => 8, :null => false
     t.integer  "produto_id",     :limit => 8, :null => false
     t.datetime "data_inicio"
@@ -56,8 +54,7 @@ ActiveRecord::Schema.define(:version => 20121114140913) do
     t.datetime "updated_at"
   end
 
-  create_table "destaques", :id => false, :force => true do |t|
-    t.integer  "id",         :limit => 8, :null => false
+  create_table "destaques", :force => true do |t|
     t.integer  "oferta_id",  :limit => 8, :null => false
     t.integer  "status_id",               :null => false
     t.datetime "created_at"
@@ -83,16 +80,25 @@ ActiveRecord::Schema.define(:version => 20121114140913) do
     t.datetime "updated_at"
   end
 
-  create_table "log_acessos", :id => false, :force => true do |t|
-    t.integer  "id",         :limit => 8, :null => false
+  create_table "imagens", :force => true do |t|
+    t.integer  "imageble_id",        :limit => 8, :null => false
+    t.string   "imageble_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "log_acessos", :force => true do |t|
     t.integer  "usuario_id", :limit => 8, :null => false
     t.integer  "cliente_id", :limit => 8, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "ofertas", :id => false, :force => true do |t|
-    t.integer  "id",                        :limit => 8,  :null => false
+  create_table "ofertas", :force => true do |t|
     t.integer  "cotacao_id",                :limit => 8,  :null => false
     t.integer  "administrador_id",          :limit => 8,  :null => false
     t.string   "nome",                      :limit => 60
@@ -108,8 +114,7 @@ ActiveRecord::Schema.define(:version => 20121114140913) do
     t.datetime "updated_at"
   end
 
-  create_table "pagamentos", :id => false, :force => true do |t|
-    t.integer  "id",                :limit => 8, :null => false
+  create_table "pagamentos", :force => true do |t|
     t.integer  "cliente_id",        :limit => 8, :null => false
     t.integer  "oferta_id",         :limit => 8, :null => false
     t.integer  "log_acesso_id",     :limit => 8, :null => false
@@ -122,8 +127,7 @@ ActiveRecord::Schema.define(:version => 20121114140913) do
     t.datetime "updated_at"
   end
 
-  create_table "produtos", :id => false, :force => true do |t|
-    t.integer  "id",                          :limit => 8,  :null => false
+  create_table "produtos", :force => true do |t|
     t.integer  "cooperativa_id",              :limit => 8,  :null => false
     t.integer  "subcategoria_id",                           :null => false
     t.string   "nome",                        :limit => 80, :null => false
@@ -167,8 +171,7 @@ ActiveRecord::Schema.define(:version => 20121114140913) do
     t.datetime "updated_at"
   end
 
-  create_table "usuarios", :id => false, :force => true do |t|
-    t.integer  "id",                              :limit => 8,  :null => false
+  create_table "usuarios", :force => true do |t|
     t.string   "nome",                            :limit => 50
     t.string   "senha"
     t.string   "username"

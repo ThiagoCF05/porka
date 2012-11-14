@@ -33,15 +33,6 @@ class CooperativasController < ApplicationController
     end
   end
 
-  def seleciona_categoria
-    @cooperativas = Cooperativa.where(:status_id => Status.find_by_descricao('Ativo')).paginate(:page => params[:page], :per_page => 24).order("nome")
-    @subcategorias = Subcategoria.where :categoria_id => Categoria.find(params[:categoria_id])
-
-    respond_to do |format|
-      format.html { render :template => 'cooperativas/index'}
-    end
-  end
-
   # GET cooperativas/new
   # GET cooperativas/new.json
   def new

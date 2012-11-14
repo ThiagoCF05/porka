@@ -3,15 +3,15 @@
     <a href="" title="Oferta">
         <img src="/assets/img_offer.jpg" width="260" height="193" class="lazy">
     </a>
-         
+
          <!--span class="district"></span>-->
          <a href="" class="title_old" onclick="" title="Produto"><%= produto.nome %></a>
-        <%= produto.descricao[0..200] + '...' %>            
+        <%= produto.descricao[0..200] + '...' %>
         <p style="position:top">
-            <a href="" title="Ver" class="btn secondary" style="bottom:-15px">>></a>
+        		<%= link_to '>>', produto_path(produto), :class => 'btn secondary' %>
         </p>
-                    
-                    
-                            
+
+
+
     </div>
 <% end %>

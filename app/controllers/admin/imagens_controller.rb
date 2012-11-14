@@ -1,4 +1,4 @@
-class Admin::ImagensController < ApplicationController
+class Admin::ImagensController < Admin::ApplicationController
   before_filter :administrador_logado
 
   # GET admin/imagens
@@ -28,23 +28,35 @@ class Admin::ImagensController < ApplicationController
   def new
     @imagem = Imagem.new
 
+    if !params[:oferta_id].nil?
+      session[:oferta_id] = params[:oferta_id]
+    elsif !params[:produto_id].nil?
+      session[:produto_id] = params[:produto_id]
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @imagem }
     end
   end
 
-  # GET admin/imagens/1/edit
-  def edit
-    @imagem = Imagem.find(params[:id])
-  end
-
   # POST admin/imagens
   # POST admin/imagens.json
   def create
     @imagem = Imagem.new(params[:imagem])
-    @imagem.imageble_id = self.current_administrator
-    @imagem.imageble_type = 'Usuario'
+
+    if !session[:oferta_id].nil?
+      @imagem.imageble_id = session[:oferta_id]
+      @imagem.imageble_type = 'Oferta'
+      session[:oferta_id] = nil
+    elsif !session[:produto_id].nil?
+      @imagem.imageble_id = session[:produto_id]
+      @imagem.imageble_type = 'Produto'
+      session[:produto_id] = nil
+    else
+      @imagem.imageble_id = self.current_administrator
+      @imagem.imageble_type = 'Usuario'
+    end
 
     respond_to do |format|
       if @imagem.save
@@ -52,22 +64,6 @@ class Admin::ImagensController < ApplicationController
         format.json { render :json => @imagem, :status => :created, :location => @imagem }
       else
         format.html { render :action => "new" }
-        format.json { render :json => @imagem.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT admin/imagens/1
-  # PUT admin/imagens/1.json
-  def update
-    @imagem = Imagem.find(params[:id])
-
-    respond_to do |format|
-      if @imagem.update_attributes(params[:imagem])
-        format.html { redirect_to [:admin, @imagem], :notice => 'Exemplo was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render :action => "edit" }
         format.json { render :json => @imagem.errors, :status => :unprocessable_entity }
       end
     end
