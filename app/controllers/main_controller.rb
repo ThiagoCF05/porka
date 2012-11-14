@@ -4,7 +4,7 @@ class MainController < ApplicationController
   # GET /index.json
   def index
     @ofertas = self.getOfertas
-    @destaque = self.getDestaque
+    @oferta = self.getDestaque.oferta
     @cooperativas = self.getCooperativas
 
     respond_to do |format|

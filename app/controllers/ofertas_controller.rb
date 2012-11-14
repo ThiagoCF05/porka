@@ -1,9 +1,8 @@
-require 'will_paginate'
 class OfertasController < ApplicationController
   # GET ofertas
   # GET ofertas.json
   def index
-    @ofertas = Oferta.where(:status_id => Status.find_by_descricao('Ativo')).paginate(:page => params[:page], :per_page => 24).shuffle
+    @ofertas = Oferta.where(:status_id => Status.find_by_descricao('Ativo'))
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +24,7 @@ class OfertasController < ApplicationController
   # GET ofertas/new
   # GET ofertas/new.json
   def new
-    @oferta = Oferta.new    
+    @oferta = Oferta.new
     @oferta.cotacao = @cotacao
     @oferta.administrador = Administrador.first
     @oferta.data_inicio = @oferta.cotacao.data_inicio
@@ -37,20 +36,20 @@ class OfertasController < ApplicationController
       format.json { render :json => @oferta }
     end
   end
-  
+
   # GET ofertas/aprovar
   # GET ofertas/aprovar.json
   def aprovar
     @oferta = Oferta.new
     @oferta.cotacao = Cotacao.find(params[:id])
     @oferta.cotacao.update_attributes(:status => Status.find_by_descricao('Aprovado'))
-    
+
     @oferta.administrador = Administrador.first
     @oferta.data_inicio = @oferta.cotacao.data_inicio
     @oferta.data_fim = @oferta.cotacao.data_fim
     @oferta.valor_convite = @oferta.cotacao.valor
     @oferta.status = Status.find 2
-    
+
     respond_to do |format|
       format.html { render :action => "new" }
       format.json { render :json => @oferta }

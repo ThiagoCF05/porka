@@ -14,10 +14,10 @@
         </div>
         <div class="grid12" style="margin-top: 5px;">
             <p>
-            <%= link_to("Ver Mais Ofertas", { :controller => "ofertas", :action => "index" }, :id => "MaisOfertas", :class => "link-ver-mais", :title => "Veja Todas as Ofertas") %>
+            <%= link_to("Ver Mais Ofertas", ofertas_path, :id => "MaisOfertas", :class => "link-ver-mais", :title => "Veja Todas as Ofertas") %>
             </p>
         </div>
-        
+
         <div class="grid12" style="margin-top: 5px;">
             <div class="other_deals_list">
                 <h2 class="title-offer">Cooperativas</h2>
@@ -28,11 +28,11 @@
         </div>
         <div class="grid12" style="margin-top: 5px;">
             <p>
-            <%= link_to("Ver Mais Cooperativas", { :controller => "cooperativas", :action => "index" }, :id => "MaisCooperativas", :class => "link-ver-mais", :title => "Veja Todas as Cooperativas") %>
+            <%= link_to("Ver Mais Cooperativas", cooperativas_path, :id => "MaisCooperativas", :class => "link-ver-mais", :title => "Veja Todas as Cooperativas") %>
             </p>
         </div>
-        
-        
+
+
         </script>
 
     </div>

@@ -26,7 +26,7 @@ Porka::Application.routes.draw do
 
   match 'admin/home' => 'Admin::Logins#create'
 
-  match 'admin/oferta/:id/tornar-destaque' => 'Admin::Destaques#create', :as => 'create_admin_destaque'
+  match 'admin/ofertas/:id/tornar-destaque' => 'Admin::Destaques#create', :as => 'create_admin_destaque'
 
   namespace :admin do
       resources :administradores
