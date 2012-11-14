@@ -4,12 +4,14 @@ class MainController < ApplicationController
   # GET /index.json
   def index
     @ofertas = self.getOfertas
-    @oferta = self.getDestaque.oferta
+    @oferta = self.getOfertaDestaque
     @cooperativas = self.getCooperativas
 
     respond_to do |format|
       format.html # index.html.erb
       #format.json { header : ok }
+    end
+  end
 
     def getCooperativas
         @cooperativas = Cooperativa.where(:status_id => Status.find_by_descricao('Ativo')).shuffle
@@ -25,6 +27,5 @@ class MainController < ApplicationController
     def getOfertaDestaque
         @oferta = Destaque.order("created_at desc").limit(1)[0].oferta
         return @oferta
->>>>>>> d3711bef9a902576c7ac0bc4f6a488bbd4746ae1
     end
 end
