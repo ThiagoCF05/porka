@@ -13,7 +13,6 @@ class OfertasController < ApplicationController
       @ofertas = @ofertas.paginate(:page => params[:page], :per_page => 24)
     end
 
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @ofertas }

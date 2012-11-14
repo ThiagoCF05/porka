@@ -6,7 +6,9 @@ Porka::Application.routes.draw do
   resources :destaques
   resources :telefones
   resources :enderecos
+  resources :logins
   resources :main
+  resources :imagens
   resources :cotacaos
   resources :ofertas
   resources :produtos
@@ -34,13 +36,13 @@ Porka::Application.routes.draw do
       resources :cotacaos
       resources :clientes
       resources :destaques
-      resources :imagens
       resources :telefones
       resources :ofertas
       resources :categorias
       resources :subcategorias
       resources :produtos
       resources :usuarios
+      resources :imagens
 
       root :to => 'Logins#index'
    end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111220645) do
+ActiveRecord::Schema.define(:version => 20121114140913) do
 
   create_table "categorias", :force => true do |t|
     t.string   "nome",       :limit => 80, :null => false
@@ -83,20 +83,6 @@ ActiveRecord::Schema.define(:version => 20121111220645) do
     t.datetime "updated_at"
   end
 
-  create_table "imagens", :id => false, :force => true do |t|
-    t.integer  "id",                  :limit => 8, :null => false
-    t.integer  "imageble_id",         :limit => 8, :null => false
-    t.string   "imageble_type"
-    t.string   "alias"
-    t.string   "nome"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "imagem_file_name"
-    t.string   "imagem_content_type"
-    t.integer  "imagem_file_size"
-    t.datetime "imagem_updated_at"
-  end
-
   create_table "log_acessos", :id => false, :force => true do |t|
     t.integer  "id",         :limit => 8, :null => false
     t.integer  "usuario_id", :limit => 8, :null => false
@@ -137,14 +123,22 @@ ActiveRecord::Schema.define(:version => 20121111220645) do
   end
 
   create_table "produtos", :id => false, :force => true do |t|
-    t.integer  "id",              :limit => 8,  :null => false
-    t.integer  "cooperativa_id",  :limit => 8,  :null => false
-    t.integer  "subcategoria_id",               :null => false
-    t.string   "nome",            :limit => 80, :null => false
+    t.integer  "id",                          :limit => 8,  :null => false
+    t.integer  "cooperativa_id",              :limit => 8,  :null => false
+    t.integer  "subcategoria_id",                           :null => false
+    t.string   "nome",                        :limit => 80, :null => false
     t.text     "descricao"
-    t.integer  "status_id",                     :null => false
+    t.integer  "status_id",                                 :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "imagem_produto_file_name"
+    t.string   "imagem_produto_content_type"
+    t.integer  "imagem_produto_file_size"
+    t.datetime "imagem_produto_updated_at"
+    t.string   "imagem_oferta_file_name"
+    t.string   "imagem_oferta_content_type"
+    t.integer  "imagem_oferta_file_size"
+    t.datetime "imagem_oferta_updated_at"
   end
 
   create_table "statuses", :force => true do |t|
@@ -174,20 +168,24 @@ ActiveRecord::Schema.define(:version => 20121111220645) do
   end
 
   create_table "usuarios", :id => false, :force => true do |t|
-    t.integer  "id",              :limit => 8,  :null => false
-    t.string   "nome",            :limit => 50
+    t.integer  "id",                              :limit => 8,  :null => false
+    t.string   "nome",                            :limit => 50
     t.string   "senha"
     t.string   "username"
-    t.string   "email",           :limit => 80, :null => false
+    t.string   "email",                           :limit => 80, :null => false
     t.datetime "data_nascimento"
-    t.string   "tipo_pessoa",     :limit => 1
-    t.integer  "documento",       :limit => 8
-    t.string   "sexo",            :limit => 1
-    t.integer  "status_id",                     :null => false
+    t.string   "tipo_pessoa",                     :limit => 1
+    t.integer  "documento",                       :limit => 8
+    t.string   "sexo",                            :limit => 1
+    t.integer  "status_id",                                     :null => false
     t.text     "descricao"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "imagem_cooperativa_file_name"
+    t.string   "imagem_cooperativa_content_type"
+    t.integer  "imagem_cooperativa_file_size"
+    t.datetime "imagem_cooperativa_updated_at"
   end
 
 end

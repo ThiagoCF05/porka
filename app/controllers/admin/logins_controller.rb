@@ -8,7 +8,7 @@ class Admin::LoginsController < Admin::ApplicationController
   end
 
   def create
-    @administrador = Administrador.where(:username => params[:username], :senha => params[:senha])[0]
+    @administrador = Usuario.where(:username => params[:username], :senha => params[:senha])[0]
 
     if @administrador == nil
       flash[:notice] = 'Falha no Login.'

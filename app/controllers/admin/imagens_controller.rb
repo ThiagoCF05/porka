@@ -1,4 +1,4 @@
-class Admin::ImagensController < Admin::ApplicationController
+class Admin::ImagensController < ApplicationController
   before_filter :administrador_logado
 
   # GET admin/imagens
@@ -43,12 +43,12 @@ class Admin::ImagensController < Admin::ApplicationController
   # POST admin/imagens.json
   def create
     @imagem = Imagem.new(params[:imagem])
-		@imagem.imageble_type = 'Cooperativa'
-		@imagem.imageble_id = Cooperativa.first
+    @imagem.imageble_id = self.current_administrator
+    @imagem.imageble_type = 'Usuario'
 
     respond_to do |format|
       if @imagem.save
-        format.html { redirect_to [:admin, @imagem], :notice => 'Imagem was successfully created.' }
+        format.html { redirect_to [:admin, @imagem], :notice => 'Exemplo was successfully created.' }
         format.json { render :json => @imagem, :status => :created, :location => @imagem }
       else
         format.html { render :action => "new" }

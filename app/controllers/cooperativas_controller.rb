@@ -5,7 +5,7 @@ class CooperativasController < ApplicationController
   # GET cooperativas.json
   def index
       @cooperativas = Cooperativa.where(:status_id => Status.find_by_descricao('Ativo'))
-      
+
       #@cooperativas = []
       #if params[:subcategoria_id].nil?
       #@cooperativas = Cooperativa.where(:status_id => Status.find_by_descricao#('Ativo')).paginate(:page => params[:page], :per_page => 24).order("#nome")
@@ -62,6 +62,7 @@ class CooperativasController < ApplicationController
   # POST cooperativas.json
   def create
     @cooperativa = Cooperativa.new(params[:cooperativa])
+    @cooperativa.status = Status.first
 
     respond_to do |format|
       if @cooperativa.save

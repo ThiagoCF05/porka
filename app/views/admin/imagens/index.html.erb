@@ -5,12 +5,14 @@
     <th>Id</th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @imagens.each do |imagem| %>
   <tr>
     <td><%= imagem.id %></td>
     <td><%= link_to 'Show Imagem', admin_imagem_path(imagem) %></td>
+    <td><%= link_to 'Edit Imagem', edit_admin_imagem_path(imagem) %></td>
     <td><%= button_to 'Destroy', [:admin,imagem] , :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

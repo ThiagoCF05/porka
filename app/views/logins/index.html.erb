@@ -1,6 +1,6 @@
 <div class="content ">
     <div class="row">
-        
+
         <div class="grid8" id="main-deal">
             <div itemscope="" itemtype="http://schema.org/Offer" class="box main_box">
                 <h1 itemprop="name">
@@ -8,7 +8,7 @@
                         href=""
                         class="deal-title">Divulgue sua Cooperativa</a></h1>
                 <!-- SHARE -->
-                
+
                 <!--mainDeal-->
                 <div class="deal-description row" style="margin:20px">
                     <%= form_tag('/home') do %>
@@ -16,25 +16,25 @@
                         <%= f.label "Nome de Usuário" %><br />
                         <%= f.text_field_tag "username", :style => "width:80%" %>
                     </div>
-                    
+
                     <div class="field">
                         <%= f.label "Senha" %><br />
                         <%= f.password_field "senha", :style => "width:80%" %>
                     </div>
-                    
+
                     <div class="actions">
-                        
+
                         <a href="" onclick="document.form.submit();" title="Enviar" class="btn secondary" style="bottom:-15px">Entrar</a>
                         <!--%= f.submit %-->
                     </div>
                     <% end %>
                 </div>
-                
+
             </div>
         </div>
-        
+
         </script>
-        
+
     </div>
     <!-- /row -->
 </div>

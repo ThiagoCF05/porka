@@ -8,14 +8,14 @@
                 href=""
                 class="deal-title">Divulgue sua Cooperativa</a></h1>
         <!-- SHARE -->
-                
+
         <!--mainDeal-->
         <div class="deal-description row" style="margin:20px">
             <%= form_for [@cooperativa] do |f| %>
             <% if @cooperativa.errors.any? %>
             <div id="error_explanation">
                 <h2><%= pluralize(@cooperativa.errors.count, "error") %> Erro ao Salvar</h2>
-                
+
                 <ul>
                     <% @cooperativa.errors.full_messages.each do |msg| %>
                     <li><%= msg %></li>
@@ -23,66 +23,57 @@
                 </ul>
             </div>
             <% end %>
-            
+
             <div class="field">
                 <%= f.label :nome %><br />
                 <%= f.text_field :nome, :style => "width:80%" %>
             </div>
-            
+
             <div class="field">
                 <%= f.label :email %><br />
                 <%= f.text_field :email, :style => "width:80%" %>
             </div>
-            
+
             <div class="field">
                 <%= f.label "Login" %><br />
                 <%= f.text_field :username, :style => "width:80%" %>
             </div>
-            
+
             <div class="field">
                 <%= f.label :senha %><br />
                 <%= f.password_field :senha, :style => "width:80%" %>
             </div>
-            
-           
+
+
             <div class="field">
                 <%= f.label "CNPJ" %><br />
                 <%= f.text_field :documento, :style => "width:80%" %>
             </div>
-            
-           
+
+
             <div class="field">
                 <%= f.label "Descrição da Minha Cooperativa" %><br />
                 <%= f.text_area :descricao, :style => "width:80%"  %>
             </div>
-            
+
             <div class="actions">
-                
-                <a href="" onclick="document.form.submit();" title="Enviar" class="btn secondary" style="bottom:-15px">Inserir Minha Cooperativa</a>
-                <!--%= f.submit %-->
+
+
+                <%= f.submit 'Inserir Minha Cooperativa', :class => 'btn secondary' %>
             </div>
             <% end %>
         </div>
-        
+
     </div>
 </div>
 
 
 
-                
-        
+
+
         </script>
 
     </div>
     <!-- /row -->
 </div>
 <!-- / content -->
-
-
-
-
-
-
-
-
-
