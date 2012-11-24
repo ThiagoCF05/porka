@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -27,7 +28,8 @@ ActiveRecord::Schema.define(:version => 20121114160639) do
     t.datetime "updated_at"
   end
 
-  create_table "clientes", :force => true do |t|
+  create_table "clientes", :id => false, :force => true do |t|
+    t.integer  "id",              :limit => 8,  :null => false
     t.string   "nome",            :limit => 50
     t.string   "senha",                         :null => false
     t.string   "username"
@@ -41,7 +43,8 @@ ActiveRecord::Schema.define(:version => 20121114160639) do
     t.datetime "updated_at"
   end
 
-  create_table "cotacaos", :force => true do |t|
+  create_table "cotacaos", :id => false, :force => true do |t|
+    t.integer  "id",             :limit => 8, :null => false
     t.integer  "cooperativa_id", :limit => 8, :null => false
     t.integer  "produto_id",     :limit => 8, :null => false
     t.datetime "data_inicio"
@@ -54,7 +57,8 @@ ActiveRecord::Schema.define(:version => 20121114160639) do
     t.datetime "updated_at"
   end
 
-  create_table "destaques", :force => true do |t|
+  create_table "destaques", :id => false, :force => true do |t|
+    t.integer  "id",         :limit => 8, :null => false
     t.integer  "oferta_id",  :limit => 8, :null => false
     t.integer  "status_id",               :null => false
     t.datetime "created_at"
@@ -91,14 +95,16 @@ ActiveRecord::Schema.define(:version => 20121114160639) do
     t.datetime "image_updated_at"
   end
 
-  create_table "log_acessos", :force => true do |t|
+  create_table "log_acessos", :id => false, :force => true do |t|
+    t.integer  "id",         :limit => 8, :null => false
     t.integer  "usuario_id", :limit => 8, :null => false
     t.integer  "cliente_id", :limit => 8, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "ofertas", :force => true do |t|
+  create_table "ofertas", :id => false, :force => true do |t|
+    t.integer  "id",                        :limit => 8,  :null => false
     t.integer  "cotacao_id",                :limit => 8,  :null => false
     t.integer  "administrador_id",          :limit => 8,  :null => false
     t.string   "nome",                      :limit => 60
@@ -114,7 +120,8 @@ ActiveRecord::Schema.define(:version => 20121114160639) do
     t.datetime "updated_at"
   end
 
-  create_table "pagamentos", :force => true do |t|
+  create_table "pagamentos", :id => false, :force => true do |t|
+    t.integer  "id",                :limit => 8, :null => false
     t.integer  "cliente_id",        :limit => 8, :null => false
     t.integer  "oferta_id",         :limit => 8, :null => false
     t.integer  "log_acesso_id",     :limit => 8, :null => false
@@ -127,22 +134,15 @@ ActiveRecord::Schema.define(:version => 20121114160639) do
     t.datetime "updated_at"
   end
 
-  create_table "produtos", :force => true do |t|
-    t.integer  "cooperativa_id",              :limit => 8,  :null => false
-    t.integer  "subcategoria_id",                           :null => false
-    t.string   "nome",                        :limit => 80, :null => false
+  create_table "produtos", :id => false, :force => true do |t|
+    t.integer  "id",              :limit => 8,  :null => false
+    t.integer  "cooperativa_id",  :limit => 8,  :null => false
+    t.integer  "subcategoria_id",               :null => false
+    t.string   "nome",            :limit => 80, :null => false
     t.text     "descricao"
-    t.integer  "status_id",                                 :null => false
+    t.integer  "status_id",                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "imagem_produto_file_name"
-    t.string   "imagem_produto_content_type"
-    t.integer  "imagem_produto_file_size"
-    t.datetime "imagem_produto_updated_at"
-    t.string   "imagem_oferta_file_name"
-    t.string   "imagem_oferta_content_type"
-    t.integer  "imagem_oferta_file_size"
-    t.datetime "imagem_oferta_updated_at"
   end
 
   create_table "statuses", :force => true do |t|
@@ -171,24 +171,21 @@ ActiveRecord::Schema.define(:version => 20121114160639) do
     t.datetime "updated_at"
   end
 
-  create_table "usuarios", :force => true do |t|
-    t.string   "nome",                            :limit => 50
+  create_table "usuarios", :id => false, :force => true do |t|
+    t.integer  "id",              :limit => 8,  :null => false
+    t.string   "nome",            :limit => 50
     t.string   "senha"
     t.string   "username"
-    t.string   "email",                           :limit => 80, :null => false
+    t.string   "email",           :limit => 80, :null => false
     t.datetime "data_nascimento"
-    t.string   "tipo_pessoa",                     :limit => 1
-    t.integer  "documento",                       :limit => 8
-    t.string   "sexo",                            :limit => 1
-    t.integer  "status_id",                                     :null => false
+    t.string   "tipo_pessoa",     :limit => 1
+    t.integer  "documento",       :limit => 8
+    t.string   "sexo",            :limit => 1
+    t.integer  "status_id",                     :null => false
     t.text     "descricao"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "imagem_cooperativa_file_name"
-    t.string   "imagem_cooperativa_content_type"
-    t.integer  "imagem_cooperativa_file_size"
-    t.datetime "imagem_cooperativa_updated_at"
   end
 
 end

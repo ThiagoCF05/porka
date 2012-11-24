@@ -11,7 +11,7 @@
                 
         <!--mainDeal-->
         <div class="deal-description row" style="margin:20px">
-            <%= form_for [, @cotacao] do |f| %>
+            <%= form_for @cotacao do |f| %>
             <% if @cotacao.errors.any? %>
             <div id="error_explanation">
                 <h2><%= pluralize(@cotacao.errors.count, "error") %> Erro ao Salvar</h2>
