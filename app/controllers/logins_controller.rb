@@ -1,24 +1,26 @@
 class LoginsController < ApplicationController
+  before_filter :cooperativa_data
   def index
-    if current_administrator == nil
-      render 'index.html.erb'
-    else
-      render 'home.html.erb'
+    respond_to do |format|
+      if current_cooperativa == nil and current_cliente == nil
+        format.html { render 'index.html.erb' }
+      else
+        format.html { render :controller => 'main', :action => 'index' }
+      end
     end
   end
 
   def create_cooperativa_user
     @cooperativa = Usuario.where(:username => params[:username], :senha => params[:senha])[0]
 
-    if @cooperativa == nil
-      flash[:notice] = 'Falha no Login.'
-    else
-      session[:current_cooperativa_id] = @cooperativa.id
-      flash[:notice] = 'Bem Vindo ' + @cooperativa.nome + '!'
-    end
-
     respond_to do |format|
-        format.html { render 'home.html.erb' }
+      if @cooperativa == nil
+      	flash[:notice] = 'Falha no Login.'
+		  else
+		    session[:current_cooperativa_id] = @cooperativa.id
+		    flash[:notice] = 'Bem Vindo ' + @cooperativa.nome + '!'
+		    format.html { redirect_to :controller => 'main', :action => 'index'  }
+		  end
     end
   end
 
@@ -42,7 +44,7 @@ class LoginsController < ApplicationController
     @_current_cliente = session[:current_cliente_id] = nil
 
     respond_to do |format|
-        format.html { render 'index.html.erb' }
+        format.html { redirect_to :controller => 'main', :action => 'index'  }
     end
   end
 end

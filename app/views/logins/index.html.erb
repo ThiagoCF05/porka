@@ -6,25 +6,24 @@
                 <h1 itemprop="name">
                     <a itemprop="url" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue ante, nec sagittis lectus. Fusce non est arcu."
                         href=""
-                        class="deal-title">Divulgue sua Cooperativa</a></h1>
+                        class="deal-title">LOGIN</a></h1>
                 <!-- SHARE -->
 
                 <!--mainDeal-->
                 <div class="deal-description row" style="margin:20px">
-                    <%= form_tag('/home') do %>
+                    <%= form_tag('/logins/create_cooperativa_user') do %>
                     <div class="field">
-                        <%= f.label "Nome de Usuário" %><br />
-                        <%= f.text_field_tag "username", :style => "width:80%" %>
+                        <%= label_tag "Nome de Usuário" %><br />
+                        <%= text_field_tag "username" %>
                     </div>
 
                     <div class="field">
-                        <%= f.label "Senha" %><br />
-                        <%= f.password_field "senha", :style => "width:80%" %>
+                        <%= label_tag "Senha" %><br />
+                        <%= password_field_tag "senha" %>
                     </div>
 
                     <div class="actions">
-
-                        <a href="" onclick="document.form.submit();" title="Enviar" class="btn secondary" style="bottom:-15px">Entrar</a>
+                        <%= submit_tag 'Entrar', :title => "Enviar", :class => "btn secondary" %>
                         <!--%= f.submit %-->
                     </div>
                     <% end %>

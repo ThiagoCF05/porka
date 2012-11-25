@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
+  before_filter :cooperativa_data
   def current_cooperativa
       if session[:current_cooperativa_id] != nil
         @_current_cooperativa = Usuario.find(session[:current_cooperativa_id])
@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
       end
 
       return @_current_cliente
+  end
+
+  def cooperativa_data
+    @current_cooperativa = current_cooperativa
   end
 
   def cliente_logado

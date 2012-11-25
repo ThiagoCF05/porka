@@ -1,6 +1,7 @@
 require 'will_paginate/array'
 
 class CooperativasController < ApplicationController
+
   # GET cooperativas
   # GET cooperativas.json
   def index

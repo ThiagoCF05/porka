@@ -35,10 +35,22 @@
             <div class="nav grid10">
                 <div class="user_nav clearfix">
                     <div class="user_menu">
-                        <ul class="not_logado" id="not_loggedin_user_menu" style="display: block;">
-                            <li><a href="" title="Cadastre-se" id="SignUpButton">Cadastre-se</a></li>
-                            <li><a href="" title="Entre com a sua conta" id="topLogin">Entrar</a></li>
-                        </ul>
+                        <% if @current_cooperativa == nil %>
+		                      <ul class="not_logado" id="not_loggedin_user_menu" style="display: block;">
+		                          <li><a href="" title="Cadastre-se" id="SignUpButton">Cadastre-se</a></li>
+		                          <li><%= link_to "Entrar", logins_path, :title => "Entre com a sua conta" %></li>
+		                      </ul>
+		                    <% else %>
+		                       <% if @current_cooperativa != nil%>
+		                         <ul class="not_logado" id="not_loggedin_user_menu" style="display: block;">
+				                        <li>Bem Vindo(a) <%= @current_cooperativa.nome %></li>
+				                        <li><%= link_to "Logout", logout_path %></li>
+				                    </ul>
+
+		                       <% elsif current_cliente != nil%>
+		                         Bem Vindo(a) <%= @current_cliente.nome %>
+		                       <% end %>
+		                    <% end %>
                     </div>
                     <!-- /user_menu -->
                 </div>
@@ -56,7 +68,11 @@
                 <%= link_to "Ofertas", :controller => "ofertas", :action => "index" %>
                 <%= link_to "Cooperativas", :controller => "cooperativas", :action => "index" %>
                 <%= link_to "Produtos", :controller => "produtos", :action => "index" %>
-                <%= link_to "Divulgue sua Cooperativa", new_cooperativa_path %>
+                <% if @current_cooperativa == nil%>
+		              <%= link_to "Divulgue sua Cooperativa", new_cooperativa_path %>
+		            <% else %>
+		              <%= link_to "Altere os Dados de sua Cooperativa", admin_cooperativa_path(@current_cooperativa) %>
+		            <% end %>
             </div>
             <div class="grid4">
                 <a href="" title="Receba nossas Notícias" class="">Receba Notícias </a>

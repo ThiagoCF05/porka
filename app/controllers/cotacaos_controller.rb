@@ -1,8 +1,9 @@
 class CotacaosController < ApplicationController
+
   # GET cotacaos
   # GET cotacaos.json
   def index
-  	@cotacaos = Cotacao.where(:status_id => Status.find_by_descricao('Ativo'), 
+  	@cotacaos = Cotacao.where(:status_id => Status.find_by_descricao('Ativo'),
   		coopertativa_id => Cooperativa.find(params[:id]))
 
     respond_to do |format|

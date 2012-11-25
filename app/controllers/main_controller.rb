@@ -1,5 +1,4 @@
 class MainController < ApplicationController
-
   # GET /index
   # GET /index.json
   def index
