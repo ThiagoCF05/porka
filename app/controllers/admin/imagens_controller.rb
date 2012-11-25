@@ -32,6 +32,8 @@ class Admin::ImagensController < Admin::ApplicationController
       session[:oferta_id] = params[:oferta_id]
     elsif !params[:produto_id].nil?
       session[:produto_id] = params[:produto_id]
+    else
+      session[:cooperativa_id] = params[:cooperativa_id]
     end
 
     respond_to do |format|
@@ -54,8 +56,9 @@ class Admin::ImagensController < Admin::ApplicationController
       @imagem.imageble_type = 'Produto'
       session[:produto_id] = nil
     else
-      @imagem.imageble_id = self.current_administrator
+      @imagem.imageble_id = session[:cooperativa_id]
       @imagem.imageble_type = 'Usuario'
+      session[:cooperativa_id] = nil
     end
 
     respond_to do |format|

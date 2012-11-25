@@ -16,7 +16,7 @@
     <td><%= cooperativa.status.descricao %></td>
     <td><%= link_to '  Show', admin_cooperativa_path(cooperativa) %></td>
     <td><%= link_to '  Edit', edit_admin_cooperativa_path(cooperativa) %></td>
-    <td><%= link_to '  Adiciona Imagem', new_admin_imagem_path %></td>
+    <td><%= link_to '  Adiciona Imagem', new_admin_cooperativa_imagem_path(cooperativa) %></td>
     <td><%= button_to "  Destroy", [:admin, cooperativa], :method=>:delete, :class=>:destroy, :confirm=>"Are you sure?" %></td>
   </tr>
 <% end %>

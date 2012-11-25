@@ -1,0 +1,52 @@
+<div class="grid8" id="main-deal">
+    <div itemscope="" itemtype="http://schema.org/Offer" class="box main_box">
+        <h1 itemprop="name">
+            <a itemprop="url" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue ante, nec sagittis lectus. Fusce non est arcu."
+                href=""
+                class="deal-title"><%= @cooperativa.nome %></a></h1>
+        <!-- SHARE -->
+        <div class="social">
+            <ul>
+                <li class="first">
+                    <p>
+                    Compartilhe esta Cooperativa:</p>
+                </li>
+                <li>
+                    <iframe allowtransparency="true" frameborder="0" scrolling="no" src="/assets/tweet_button.1347008535.htm"
+                        class="twitter_bt twitter-share-button twitter-count-horizontal" style="width: 110px;
+                        height: 20px;" title="Twitter Tweet Button" data-twttr-rendered="true"></iframe>
+                </li>
+                <li>
+                    <iframe src="/assets/like.htm" scrolling="no" frameborder="0" style="border: none;
+                        overflow: hidden; width: 100px; height: 21px;" allowtransparency="true"></iframe>
+                </li>
+            </ul>
+        </div>
+        <!-- /SHARE -->
+
+        <!--mainDeal-->
+        <div id="mainDeal">
+            <!--sidebarDeal-->
+            <div id="mainImage">
+                <a title="PromoÁ„o da Cooperativa!"
+                    class="" style="display: block;">
+                    <% if @cooperativa.imagens.count != 0 %>
+                      <%= image_tag @cooperativa.imagens[0].image.url(:medium), :class => "oferta" %>
+                    <% end %>
+                        </a>
+            </div>
+
+        <div class="deal-description row">
+            <%= @cooperativa.descricao.html_safe %>
+
+            <div class="grid12" style="margin-top: 5px;">
+                <p>
+                <%= link_to("Ver Ofertas desta Cooperativa", cooperativa_ofertas_path(@cooperativa), :id => "MaisCooperativas", :class => "link-ver-mais", :title => "Veja Todas as Cooperativas") %>
+                </p>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
