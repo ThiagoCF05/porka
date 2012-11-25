@@ -29,6 +29,7 @@ Porka::Application.routes.draw do
   match 'admin/ofertas/aprovar/:id' => 'Admin::Ofertas#aprovar', :as => 'new_admin_aprovacao_cotacao'
 
   match 'admin/home' => 'Admin::Logins#create'
+  match 'admin/logout' => 'Admin::Logins#destroy', :as => 'admin_logout'
 
   match 'admin/ofertas/:id/tornar-destaque' => 'Admin::Destaques#create', :as => 'create_admin_destaque'
   match 'admin/ofertas/:oferta_id/imagens/new' => 'Admin::Imagens#new', :as => 'new_admin_oferta_imagem'
