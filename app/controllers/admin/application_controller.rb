@@ -13,7 +13,7 @@ class Admin::ApplicationController < ActionController::Base
 
   def administrador_logado
       if self.current_administrator == nil
-       flash[:notice] = 'Área Restrita: necessário login'
+       flash[:notice] = 'Area Restrita - necessario login'
        redirect_to :controller => 'Logins', :action => 'index'
       end
   end

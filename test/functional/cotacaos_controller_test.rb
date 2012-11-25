@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CotacaoTest < ActiveSupport::TestCase
+class CotacaosControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

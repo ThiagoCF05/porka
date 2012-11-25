@@ -1,19 +1,36 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  def current_administrator
-      if session[:current_administrator_id] != nil
-        @_current_administrator = Usuario.find(session[:current_administrator_id])
+  def current_cooperativa
+      if session[:current_cooperativa_id] != nil
+        @_current_cooperativa = Usuario.find(session[:current_cooperativa_id])
       else
-        @_current_administrator = nil
+        @_current_cooperativa = nil
       end
 
-      return @_current_administrator
+      return @_current_cooperativa
   end
 
-  def administrador_logado
-      if self.current_administrator == nil
-        flash[:notice] = 'Área Restrita: necessário login'
+  def cooperativa_logada
+      if self.current_cooperativa == nil
+        flash[:notice] = 'Area Restrita - necessario login'
+        redirect_to :controller => 'Logins', :action => 'index'
+      end
+  end
+
+  def current_cliente
+      if session[:current_cliente_id] != nil
+        @_current_cliente = Cliente.find(session[:current_cliente_id])
+      else
+        @_current_cliente = nil
+      end
+
+      return @_current_cliente
+  end
+
+  def cliente_logado
+      if self.current_cliente == nil
+        flash[:notice] = 'Area Restrita - necessario login'
         redirect_to :controller => 'Logins', :action => 'index'
       end
   end

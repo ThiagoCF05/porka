@@ -1,7 +1,9 @@
 Porka::Application.routes.draw do
   resources :administradores
   resources :usuarios
-  resources :cooperativas
+  resources :cooperativas do
+    resources :cotacaos
+  end
   resources :clientes
   resources :destaques
   resources :telefones
