@@ -53,3 +53,13 @@
 
 <%= link_to 'Editar', edit_admin_cooperativa_path(@cooperativa) %> |
 <%= link_to 'Voltar', admin_cooperativas_path %>
+<br /><br />
+
+<h1>PRODUTOS</h1>
+<%= link_to 'Ver Produtos da Cooperativa', { :controller => 'admin/produtos', :action => 'index', :cooperativa_id => @cooperativa.id  } %><br />
+<%= link_to 'Novo Produto da Cooperativa', { :controller => 'admin/produtos', :action => 'new', :cooperativa_id => @cooperativa.id  } %><br />
+<br /><br />
+
+<h1>COTAÇÕES</h1>
+<%= link_to 'Ver Cotações da Cooperativa', { :controller => 'admin/cotacaos', :action => 'index', :cooperativa_id => @cooperativa.id  } %><br />
+<%= link_to 'Nova Cotação da Cooperativa', { :controller => 'admin/cotacaos', :action => 'new', :cooperativa_id => @cooperativa.id  } %><br />

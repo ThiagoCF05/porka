@@ -1,5 +1,5 @@
 class Admin::CooperativasController < Admin::ApplicationController
-  before_filter :administrador_logado
+  before_filter :cooperativa_administrador_logado
 
   # GET admin/cooperativas
   # GET admin/cooperativas.json
@@ -15,7 +15,11 @@ class Admin::CooperativasController < Admin::ApplicationController
   # GET admin/cooperativas/1
   # GET admin/cooperativas/1.json
   def show
-    @cooperativa = Cooperativa.find(params[:id])
+    if params[:id]
+      @cooperativa = Cooperativa.find(params[:id])
+    else
+      @cooperativa = Cooperativa.find(params[:cooperativa_id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb

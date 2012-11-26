@@ -1,10 +1,15 @@
 class Admin::ProdutosController < Admin::ApplicationController
-  before_filter :administrador_logado
+  before_filter :cooperativa_administrador_logado, :only => [:index]
+  before_filter :cooperativa_administrador_logado2, :only => [:show, :new, :edit, :update, :create, :destroy ]
 
   # GET admin/produtos
   # GET admin/produtos.json
   def index
-    @produtos = Produto.where(:status_id => Status.find_by_descricao('Ativo'))
+    if params[:cooperativa_id]
+      @produtos = Produto.where(:status_id => Status.find_by_descricao('Ativo'), :cooperativa_id => Cooperativa.find(params[:cooperativa_id]))
+    else
+      @produtos = Produto.where(:status_id => Status.find_by_descricao('Ativo'))
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,6 +32,10 @@ class Admin::ProdutosController < Admin::ApplicationController
   # GET admin/produtos/new.json
   def new
     @produto = Produto.new
+
+    if params[:cooperativa_id]
+      @produto.cooperativa = Cooperativa.find(params[:cooperativa_id])
+    end
 
     respond_to do |format|
       format.html # new.html.erb

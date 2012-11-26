@@ -1,10 +1,15 @@
 class Admin::CotacaosController < Admin::ApplicationController
-  before_filter :administrador_logado
+  before_filter :cooperativa_administrador_logado, :only => [:index]
+  before_filter :cooperativa_administrador_logado2, :only => [:show, :new, :edit, :update, :create, :destroy ]
 
     # GET admin/cotacaos
   # GET admin/cotacaos.json
   def index
-    @cotacaos = Cotacao.where(:status_id => Status.find_by_descricao('Ativo'))
+    if params[:cooperativa_id]
+      @cotacaos = Cotacao.where(:status_id => Status.find_by_descricao('Ativo'), :cooperativa_id => Cooperativa.find(params[:cooperativa_id]))
+    else
+      @cotacaos = Cotacao.where(:status_id => Status.find_by_descricao('Ativo'))
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,6 +33,10 @@ class Admin::CotacaosController < Admin::ApplicationController
   def new
     @cotacao = Cotacao.new
     @cotacao.tipo = 'C'
+
+    if params[:cooperativa_id]
+      @cotacao.cooperativa = Cooperativa.find(params[:cooperativa_id])
+    end
 
     respond_to do |format|
       format.html # new.html.erb

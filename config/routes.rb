@@ -39,11 +39,15 @@ Porka::Application.routes.draw do
 
   match 'admin/produtos/:produto_id/imagens/new' => 'Admin::Imagens#new', :as => 'new_admin_produto_imagem'
 
-   match 'admin/cooperativas/:cooperativa_id/imagens/new' => 'Admin::Imagens#new', :as => 'new_admin_cooperativa_imagem'
+  match 'admin/cooperativas/:cooperativa_id/imagens/new' => 'Admin::Imagens#new', :as => 'new_admin_cooperativa_imagem'
+  match 'admin/cooperativas/:cooperativa_id' => 'Admin::Cooperativas#show', :as => 'admin_cooperativa_logada'
 
   namespace :admin do
       resources :administradores
-      resources :cooperativas
+      resources :cooperativas do
+				resources :cotacaos
+				resources :produtos
+			end
       resources :cotacaos
       resources :clientes
       resources :destaques

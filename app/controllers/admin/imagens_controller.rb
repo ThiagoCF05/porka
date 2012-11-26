@@ -1,5 +1,5 @@
 class Admin::ImagensController < Admin::ApplicationController
-  before_filter :administrador_logado
+  before_filter :cooperativa_administrador_logado2
 
   # GET admin/imagens
   # GET admin/imagens.json

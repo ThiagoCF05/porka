@@ -71,7 +71,7 @@
                 <% if @current_cooperativa == nil%>
 		              <%= link_to "Divulgue sua Cooperativa", new_cooperativa_path %>
 		            <% else %>
-		              <%= link_to "Altere os Dados de sua Cooperativa", admin_cooperativa_path(@current_cooperativa) %>
+		              <%= link_to "Altere os Dados de sua Cooperativa", admin_cooperativa_logada_path(@current_cooperativa) %>
 		            <% end %>
             </div>
             <div class="grid4">
