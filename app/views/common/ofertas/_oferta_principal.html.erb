@@ -38,13 +38,8 @@
 		
 	
 		window.onload=function(){
-			atualizaContador('2012','12','01','23','00','counter');
+			atualizaContador('<%= @oferta.data_fim.year %>','<%= @oferta.data_fim.month %>','<%= @oferta.data_fim.day %>','23','59','counter');
 		}
-		/*
-		window.setInterval(function(){
-			atualizaContador('2012','','14','23','00','00','elementodedestino')
-		}, 1000);
-		*/
 		
 		</script>
 
