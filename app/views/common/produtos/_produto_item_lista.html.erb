@@ -5,6 +5,7 @@
           <%= image_tag produto.imagens[0].image.url(:thumb), :class => "lazy" %>
         <% end %>
     </a>
+	<% produto.descricao = produto.descricao.gsub("<p>", " ").gsub("</p>", " ")%>
 
          <!--span class="district"></span>-->
          <a href="" class="title_old" onclick="" title="Produto"><%= produto.nome %></a>

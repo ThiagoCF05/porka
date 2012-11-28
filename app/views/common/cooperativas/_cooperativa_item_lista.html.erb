@@ -5,7 +5,7 @@
           <%= image_tag cooperativa.imagens[0].image.url(:thumb), :class => "lazy" %>
         <% end %>
     </a>
-
+	<% cooperativa.descricao = cooperativa.descricao.gsub("<p>", " ").gsub("</p>", " ")%>
          <!--span class="district"></span>-->
          <a href="" class="title_old" onclick="" title="Teste!"><%= cooperativa.nome %></a>
         <%= cooperativa.descricao[0..200] + '...' %>

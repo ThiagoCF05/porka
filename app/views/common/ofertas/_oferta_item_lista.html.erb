@@ -6,11 +6,17 @@
         <% end %>
     </a>
 
+	<% oferta.cotacao.descricao = oferta.cotacao.descricao.gsub("<p>", " ").gsub("</p>", " ")%>
+
          <a href="" class="title_old" onclick="" title="<%= oferta.nome %>"><%= oferta.nome %></a>
-        <%= oferta.cotacao.descricao.size > 125 ? oferta.cotacao.descricao[0..120] + '...' : oferta.cotacao.descricao %>
+        <%= oferta.cotacao.descricao.size > 125 ? oferta.cotacao.descricao[0..120] + '...': oferta.cotacao.descricao  %>
         <p>
 
-        <span id="oldprice_243488" class="price_from old_priceNovo" style="text-decoration: none">De: R$ <%= format("%.2f", oferta.valor_convite) %></span> <span class="new_price"><span>Por: R$ </span><%= format("%.2f", oferta.valor_convite_promocional)%></span>
+	<% if(oferta.valor_convite > 0 && oferta.valor_convite > oferta.valor_convite_promocional) %>
+        <span id="oldprice_243488" class="price_from old_priceNovo" style="text-decoration: none">De: R$ <%= format("%.2f", oferta.valor_convite) %></span> 
+	<% end %>
+	<span class="new_price">
+	<span>Por: R$ </span><%= format("%.2f", oferta.valor_convite_promocional)%></span>
         <%= link_to(">>", oferta_path(oferta), :class => "btn secondary", :title => "Ver") %>
         </p>
     </div>

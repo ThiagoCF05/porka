@@ -1,4 +1,54 @@
-h<div class="grid8" id="main-deal">
+<script type="text/javascript"	>
+		
+		function atualizaContador(YY,MM,DD,HH,MI,saida) {
+			
+			var SS = 00; //Segundos
+			var hoje = new Date(); //Dia
+			var futuro = new Date(YY,MM-1,DD,HH,MI,SS); //Data limite do contador
+			 
+			var ss = parseInt((futuro - hoje) / 1000); //Determina a quantidade total de segundos que faltam
+			var mm = parseInt(ss / 60); //Determina a quantidade total de minutos que faltam
+			var hh = parseInt(mm / 60); //Determina a quantidade total de horas que faltam
+			var dd = parseInt(hh / 24); //Determina a quantidade total de dias que faltam
+			 
+			ss = ss - (mm * 60); //Determina a quantidade de segundos
+			mm = mm - (hh * 60); //Determina a quantidade de minutos
+			hh = hh - (dd * 24); //Determina a quantidade de horas
+			 
+			//O bloco abaixo descreve monta o que vai ser escrito na tela
+			var faltam = '';
+			faltam += "<strong id='timeremh' class='high'>" + ((dd && dd > 1) ? dd+'</strong>D ' : (dd==1 ? '1 </strong>D ' : '0</strong>D '));
+			faltam += "<strong id='timeremh' class='high'>" + ((toString(hh).length) ? hh+ '</strong>H ' : ' 0 </strong>H ');
+			faltam += "<strong id='timeremm' class='high'>" + ((toString(mm).length) ? mm+ '</strong>M ' : ' 0 </strong>M ');
+			faltam += "<strong id='timerems' class='high'>" + ss + '</strong>S ';
+			faltam += "<span>Tempo restante</span>";
+			 
+			if (dd+hh+mm+ss > 0) {
+				//alert(faltam);
+				document.getElementById(saida).innerHTML = faltam;//Insere o conteudo da variável faltam na página.
+				setTimeout(function(){atualizaContador(YY,MM,DD,HH,MI,saida)},1000);//Reinicia a função a cada um segundo
+			} else {
+				//alert(faltam);
+				document.getElementById(saida).innerHTML = '';
+				setTimeout(function(){atualizaContador(YY,MM,DD,HH,MI,saida)},1000);
+			}
+			
+		}
+		
+		
+	
+		window.onload=function(){
+			atualizaContador('2012','12','01','23','00','counter');
+		}
+		/*
+		window.setInterval(function(){
+			atualizaContador('2012','','14','23','00','00','elementodedestino')
+		}, 1000);
+		*/
+		
+		</script>
+
+<div class="grid8" id="main-deal">
     <div itemscope="" itemtype="http://schema.org/Offer" class="box main_box">
         <h1 itemprop="name">
             <a itemprop="url" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at augue ante, nec sagittis lectus. Fusce non est arcu."
@@ -53,9 +103,9 @@ h<div class="grid8" id="main-deal">
                 <div class="infoSidebarDeal first-child">
                     <strong id="totalsold"><%= Pagamento.where(:oferta_id => @oferta).count %></strong> <span>Cupons vendidos</span>
                 </div>
-                <div class="infoSidebarDeal" >
-                    <strong id="timeremh" class="high">24</strong>h <strong id="timeremm" class="high">59</strong>m
-                    <strong id="timerems" class="high">59</strong>s <span>Tempo restante</span>
+                <div id="counter" class="infoSidebarDeal" >
+                    <!--strong id="timeremh" class="high">24</strong>h <strong id="timeremm" class="high">59</strong>m
+                    <strong id="timerems" class="high">59</strong>s <span>Tempo restante</span-->
                 </div>
             </div>
 
